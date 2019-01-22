@@ -1,0 +1,29 @@
+<section id="menu">
+  <span id="search-page-span">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input name="search-page" 
+           id="search-page-input" 
+           type="text" 
+           placeholder="Search for page..."
+           #filterInput
+           (keyup)="filterMenuItems(filterInput.value)">
+  </span>
+  <nav>
+    <ul>
+      <li *ngFor="let filteredItem of filteredMenuItems">
+          <a style="color: yellow;" href="/page/{{filteredItem}}">{{filteredItem}}</a>
+      </li>
+    </ul>
+    <ul *ngIf="filteredMenuItems.length === 0">
+      <li *ngFor="let menuItem of menuItems">
+        <a href="/page/{{menuItem}}">{{menuItem}}</a>
+      </li>
+    </ul>
+  </nav>
+  <button id="close-menu" #closeButton
+          (click)="toggleMenu()">
+    <span>close menu</span>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+  
+</section>

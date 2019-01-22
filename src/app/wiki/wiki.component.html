@@ -1,0 +1,40 @@
+<div id="wiki-container">
+  <section *ngIf="editMode"
+           id="edit-wiki"
+           class="half">
+    <textarea placeholder="Page content..."
+              [formControl]="inputContent"
+              #inputContents
+              (keydown)="handleSaveKeyCombos($event)"        
+              (keyup)="updateContentValue(inputContents)"></textarea>
+      
+
+    <div id="save-cancel">
+      <button id="cancel"
+        title="Cancel changes" 
+        (click)="cancelEditWiki();">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <span>Cancel</span>
+      </button>
+      <button id="save"
+              title="Save wiki entry"
+              (click)="saveWiki()">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        <span>Save</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="view-wiki" 
+            class="{{editMode ? 'half' : 'full'}}">
+
+    <div markdown [data]="wikiPage.pageContent"></div>
+
+    <span id="timestamp">Last updated {{wikiPage.dateUpdated | date:'yyyy.MM.dd.E HH:mm'}}</span>
+    <button id="edit" (click)="turnEditModeOn()">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      <span>Edit</span>
+    </button>
+  </section>
+
+</div>

@@ -1,0 +1,134 @@
+#wiki-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 15px;
+}
+
+#edit-wiki,
+#view-wiki {
+  position: relative;   
+}
+#view-wiki {
+  margin-left: 2rem;
+  min-height: 100px;
+}
+#view-wiki.full {
+  margin-left: 0;
+}
+
+.half {
+  width: 50%;
+}
+.full {
+  width: 100%;
+}
+
+#page-title,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.875rem;
+  outline: none;
+  box-sizing: border-box;
+  border: 1px solid #cecece;
+}
+#page-title {
+  border-bottom: none;
+  font-size: 1.5rem;
+}
+textarea {
+  height: 70vh;
+  border-top: none;
+  resize: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  i {
+    display: block;
+    font-size: 25px;
+  }
+  span {
+    clear: both;
+    color: #fff;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+#save-cancel {
+  display: flex;
+  justify-content: space-between;
+}
+
+button#save {
+  color: #00b300;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #00b300;
+  }
+}
+button#cancel {
+  color: #ff6464;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #ff6464;;
+  }
+}
+
+#timestamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #cecece;
+  font-size: 0.875rem;
+}
+button#edit {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  color: #006eb3;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #006eb3;
+  }
+  &:focus {
+    outline: none;
+  }
+  i {
+    display: block;
+    font-size: 25px;
+  }
+  span {
+    clear: both;
+    color: #fff;
+  }
+}
+
+#view-wiki.full button#edit {
+  display: block;
+}
+
+@media (max-width: 762px) {
+  #wiki-container {
+    flex-direction: column;
+  }
+  .half {
+    width: 100%;
+  }
+  #view-wiki {
+    margin-left: 0;
+  }
+}
