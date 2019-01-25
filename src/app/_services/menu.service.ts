@@ -25,7 +25,7 @@ export class MenuService extends BaseService{
 
   getPagePaths(): Observable<any> {
     if (!this.fetchedPaths) {
-      this.fetchedPaths = this.http.get(this.apiUrl + '/allpaths');
+      this.fetchedPaths = this.http.get(Url.API_CONTEXT + '/allpaths');
     }
 
     return this.fetchedPaths;

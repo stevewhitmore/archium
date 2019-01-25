@@ -1,9 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError } from 'rxjs';
-
+import { Url } from '@enum';
 
 export class BaseService {
-  apiUrl = 'http://localhost:3000/api';
 
   constructor(http: HttpClient) {}
 

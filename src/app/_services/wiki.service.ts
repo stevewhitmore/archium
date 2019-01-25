@@ -13,19 +13,17 @@ export class WikiService extends BaseService {
   
   constructor(private http: HttpClient) {
     super(http);
-    this.apiUrl = this.apiUrl + '/pages/';
   }
 
   getPageData(passedInPath): Observable<WikiModel> {  
-    return <Observable<WikiModel>>this.http.get(this.apiUrl + passedInPath);
+    return <Observable<WikiModel>>this.http.get(Url.PAGE_CONTEXT + passedInPath);
   }
 
   updatePageContent(wikiPage): Observable<any> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const url = this.apiUrl + wikiPage.path;
-    return <Observable<any>>this.http.put<WikiModel>(url, wikiPage, {observe: 'response'})
+    return <Observable<any>>this.http.put<WikiModel>(Url.API_CONTEXT, wikiPage, {observe: 'response'})
               .pipe(catchError(super.handleError));
     
   }
@@ -40,9 +38,8 @@ export class WikiService extends BaseService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    const url = this.apiUrl + routeNameInput;
 
-    return <Observable<any>>this.http.post<WikiModel>(url, createdWiki, {observe: 'response'})
+    return <Observable<any>>this.http.post<WikiModel>(Url.API_CONTEXT, createdWiki, {observe: 'response'})
               .pipe(catchError(super.handleError));
   }
 
