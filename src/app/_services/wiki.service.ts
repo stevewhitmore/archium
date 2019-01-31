@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, empty } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { WikiModel } from '../wiki/wiki.model';
 import { BaseService } from './base.service';
+
+import {Url} from '../_enums/url.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +45,8 @@ export class WikiService extends BaseService {
               .pipe(catchError(super.handleError));
   }
 
+    deleteWikiPage(wikiPage: WikiModel): Observable<any> {
+        console.log('page delete service call');
+        return empty();
+    }
 }

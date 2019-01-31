@@ -2,10 +2,11 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "paths": [
-        "enum": "./app/_enums"
-    ],
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": { 
+        "@enums": ["./app/_enums/*"] 
+    }
   },
   "exclude": [
     "src/test.ts",

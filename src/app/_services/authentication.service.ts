@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { BaseService } from './base.service';
 
+import {Url} from '../_enums/url.enum';
+
 @Injectable({ 
   providedIn: 'root' 
 })
@@ -14,7 +16,7 @@ export class AuthenticationService extends BaseService {
   }
 
   login(username: string, password: string) {
-      return this.http.post<any>(`${this.apiUrl}/user/authenticate`, { username, password })
+      return this.http.post<any>(`${Url.API_CONTEXT}user/authenticate`, { username, password })
                 .pipe(map(user => {
                     if (user && user.token) {
                         localStorage.setItem('currentUser', JSON.stringify(user));

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError as observableThrowError } from 'rxjs';
-import { Url } from '@enum';
+import { Url } from '@enums';
 
 export class BaseService {
 
