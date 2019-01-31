@@ -82,43 +82,91 @@ button#cancel {
   }
 }
 
-#timestamp {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #cecece;
-  font-size: 0.875rem;
-}
-button#edit {
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: 0;
-  color: #006eb3;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  padding: 0.5rem 1rem;
-  &:hover,
-  &:focus {
-    color: #fff;
-    background-color: #006eb3;
-  }
-  &:focus {
-    outline: none;
-  }
-  i {
-    display: block;
-    font-size: 25px;
-  }
-  span {
-    clear: both;
-    color: #fff;
-  }
+#wiki-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #cecece;
+    font-size: 0.875rem;
+    #wiki-controls-inner {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    button {
+      display: none;
+      color: #006eb3;
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      &:hover,
+      &:focus {
+        color: #fff;
+        background-color: #006eb3;
+      }
+      &:focus {
+        outline: none;
+      }
+      i {
+        display: block;
+        font-size: 25px;
+      }
+      span {
+        clear: both;
+        color: #fff;
+      }
+    }
 }
 
-#view-wiki.full button#edit {
+#view-wiki.full button {
   display: block;
+}
+
+.confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    height: 100vh;
+    .confirm-inner {
+        display: block;
+        background-color: #fff;
+        width: 300px;
+        padding: 1rem;
+        margin: 7rem auto;
+        color: #000;
+        .confirm-button-group {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+            button {
+                font-size: 1.25rem;
+                width: 80px !important;
+                height: 42px;
+                &.yes {
+                    color: #ff6464;
+                    margin-right: 1rem;
+                    &:hover,
+                    &:focus {
+                        color: #fff;
+                        background-color: #ff6464;
+                    }
+                }
+                &.no {
+                    color: #fff; 
+                    background-color: #006eb3;
+                    &:hover,
+                    &:focus {
+                        color: #006eb3;
+                        background-color: #fff;
+                        border: 1px solid #006eb3;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 762px) {

@@ -30,11 +30,28 @@
 
     <div markdown [data]="wikiPage.pageContent"></div>
 
-    <span id="timestamp">Last updated {{wikiPage.dateUpdated | date:'yyyy.MM.dd.E HH:mm'}}</span>
-    <button id="edit" (click)="turnEditModeOn()">
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-      <span>Edit</span>
-    </button>
+    <div id="wiki-controls">
+        <span id="timestamp">Last updated {{wikiPage.dateUpdated | date:'yyyy.MM.dd.E HH:mm'}}</span>
+        <div id="wiki-controls-inner" *ngIf="!deleteCheckOn">
+            <button id="edit" (click)="turnEditModeOn()">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <span>Edit</span>
+            </button>
+            <button id="delete" (click)="toggleDeleteCheck()">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+              <span>Delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="confirm" id="are-you-sure-delete" *ngIf="deleteCheckOn">
+        <div class="confirm-inner">
+            <span>Are you sure you want to delete this page?<br><br>This cannot be undone.</span>
+            <div class="confirm-button-group">
+                <button class="yes" (click)="deleteWikiPage()">Yes</button>
+                <button class="no" (click)="toggleDeleteCheck()">No</button>
+            </div>
+        </div>
+    </div>
   </section>
 
 </div>
