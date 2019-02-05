@@ -5,7 +5,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": { 
-        "@enums": ["./app/_enums/*"] 
+        "@enums": ["./app/_enums/index.ts"] 
     }
   },
   "exclude": [
