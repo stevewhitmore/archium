@@ -22,10 +22,12 @@ export class MenuService extends BaseService{
   }
 
   toggleMenu() {
+    console.log('toggleMenu');
     this.toggleMenuComponent.next(null);
   }
 
   getPagePaths(): Observable<any> {
+    console.log('get page paths');
     if (!this.fetchedPaths) {
       this.fetchedPaths = this.http.get(Url.API_CONTEXT + '/allpaths');
     }

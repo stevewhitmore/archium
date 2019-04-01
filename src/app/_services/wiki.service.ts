@@ -17,7 +17,7 @@ export class WikiService extends BaseService {
     super(http);
   }
 
-  getPageData(passedInPath): Observable<WikiModel> {  
+  getPageData(passedInPath): Observable<WikiModel> {
     return <Observable<WikiModel>>this.http.get(Url.PAGE_CONTEXT + passedInPath);
   }
 
