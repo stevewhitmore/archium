@@ -46,11 +46,11 @@ export class WikiComponent implements OnInit {
         this.wikiService.getPageData(path).pipe(take(1))
             .subscribe(data => {
                 this.wikiPage = data;
-                this.inputContent.setValue(this.wikiPage.pageContent);          
+                this.inputContent.setValue(this.wikiPage.pageContent);
             });
     }
 
-    updateContentValue(el) {   
+    updateContentValue(el) {
         this.wikiPage.pageContent = el.value;
     }
 
@@ -103,24 +103,24 @@ export class WikiComponent implements OnInit {
     turnEditModeOn() {
         if (!this.editMode) {
             this.contentValueSnapshot = this.wikiPage.pageContent;
-            this.toggleEditWiki();  
+            this.toggleEditWiki();
         }
     }
 
     toggleEditWiki() {
         this.editMode = !this.editMode;
     }
-    
+
     toggleDeleteCheck() {
         this.deleteCheckOn = !this.deleteCheckOn;
     }
 
     deleteWikiPage() {
-        this.wikiService.deleteWikiPage(this.wikiPage).subscribe(data => {
+        this.wikiService.deleteWikiPage(this.wikiPage).subscribe(resp => {
             this.notifierService.notify('success', `Status ${resp.status}: Changes saved!`);
-            this.router.navigate('/');
+            this.router.navigateByUrl('/');
         }, resp => {
             this.unsuccessfulUpdate(resp);
-        }); 
+        });
     }
 }

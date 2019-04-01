@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { MenuService } from '../_services/menu.service';
@@ -10,7 +10,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   toggleMenuSub: Subscription;
   menuVisible = false;
   filterInput = new FormControl('');
@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   filteredMenuItems = [];
 
   constructor(private menuService: MenuService,
-              private authenticationService: AuthenticationService){                
+              private authenticationService: AuthenticationService){
   }
 
   ngOnInit() {
@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit {
     if (this.menuItems.length === 0) {
       this.menuService.getPagePaths().subscribe(pageMap => {
         this.menuItems = pageMap;
+        console.log('menuItems: ', this.menuItems);
       });
     }
   }
