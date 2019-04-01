@@ -45,8 +45,9 @@ export class WikiService extends BaseService {
               .pipe(catchError(super.handleError));
   }
 
-    deleteWikiPage(wikiPage: WikiModel): Observable<any> {
-        console.log('page delete service call');
-        return empty();
+    deleteWikiPage(wikiPage: string): Observable<any> {
+        console.log("wikiPage: ", wikiPage);
+        return <Observable<any>>this.http.delete(Url.PAGE_CONTEXT + wikiPage, {observe: 'response'})
+              .pipe(catchError(super.handleError));
     }
 }
