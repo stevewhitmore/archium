@@ -24,5 +24,3 @@ and it'll run on localhost:4200
 - Finish delete service call
 - Get rid of 'confirm' dialog and use custom one
 - Fix errors thrown by base-service.ts that happen on update and create
-- Add admin functionality
-- Add notecard functionality
