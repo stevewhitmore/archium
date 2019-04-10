@@ -116,7 +116,7 @@ export class WikiComponent implements OnInit {
     }
 
     deleteWikiPage() {
-        this.wikiService.deleteWikiPage(this.wikiPage).subscribe(resp => {
+        this.wikiService.deleteWikiPage(this.wikiPage.path).subscribe(resp => {
             this.notifierService.notify('success', `Status ${resp.status}: Changes saved!`);
             this.router.navigateByUrl('/');
         }, resp => {

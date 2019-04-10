@@ -5,7 +5,10 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": { 
+        "@enums": ["./app/_enums/index.ts"] 
+    }
   },
   "files": [
     "test.ts",
