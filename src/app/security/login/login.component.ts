@@ -1,15 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from '../authentication.service';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -19,13 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.buildForm();
 
-    this.authenticationService.logout();
+    this.authenticationService.logOut();
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -44,10 +46,11 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(username, password)
                               .pipe(take(1))
                               .subscribe(() => {
-                                this.notifierService.notify('success', 'Login successful!');
+                                this.notificationService.notify('success', 'Login successful!');
                                 this.router.navigate([this.returnUrl]);
+                                this.authenticationService.userLoginEvent();
                               }, error => {
-                                this.notifierService.notify('error', error.message);
+                                this.notificationService.notify('error', error.message);
                               });
 
 

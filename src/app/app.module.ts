@@ -7,17 +7,25 @@ import { WikiComponent } from './wiki/wiki.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './security/login/login.component';
 import { ToastaModule } from 'ngx-toasta';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WikiComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ToolbarComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     ToastaModule.forRoot()
   ],
   providers: [],
