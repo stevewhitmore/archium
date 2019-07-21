@@ -1,36 +1,27 @@
-# Archium [ar'kiyum] - "*the archives*" 
+# Archium
 
-Archium is an application meant to act as a personal learning suite in the form of a personalized wiki, flash cards, and an admin section to track progress and plan future learning. It's also in the process of being upgraded to meet Progressive Web App standards - https://developers.google.com/web/progressive-web-apps/.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
-The microservices used for backend operations is and will be written in PHP - not to be ironic or because I particularly enjoy working with the language, but because this is an application I'm actually using for myself and it's being deployed to a shared hosting provider. This means choices in technology stacks are extremely limited. I chose this route because I'm paying for it anyway and I'm getting way more storage space to utilize this application rather than going with a free tier Heroku or AWS plan. On that note I don't have anyting against PHP. I just thought I'd mention it since it's less fashionable than say Spring or Express.
- 
-Inspired by Ben Vacha's [Specter](https://github.com/benvacha/specter). 
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
----
-## This is a work in progress
-Due to having multiple jobs and a family to take up most of my time the projected deployment date of v1 is the end of the year. Between now and then I have the following major tasks to complete -
+## Code scaffolding
 
-### Todos
-- Upgrade to Angular v8+
-- Fix unit tests
-- Update API endpoint URLs
-- Update proxy for local development
-- Finish authentication functionality
-- Finish delete service call
-- Get rid of 'confirm' dialog and use custom one
-- Update to meet PWA standards
-- Add flashcard functionality
-- Add admin section functionality
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Build
 
----
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running Locally
-```git clone <repo>```
+## Running unit tests
 
-```cd web && npm i && npm start```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-and it'll run on localhost:4200
+## Running end-to-end tests
 
-You'll also need PHP v7+ with all the contents of the "services" folder.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
