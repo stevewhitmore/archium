@@ -32,3 +32,5 @@ Due to having multiple jobs and a family to take up most of my time the projecte
 ```cd web && npm i && npm start```
 
 and it'll run on localhost:4200
+
+You'll also need PHP v7+ with all the contents of the "services" folder.
