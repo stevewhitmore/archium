@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   providedIn: 'root' 
 })
 export class AuthenticationService {
-  logOutEventSource = new Subject<any>();
-  logOutEvent$ = this.logOutEventSource.asObservable();
+  logInEventSource = new Subject<any>();
+  logInEvent$ = this.logInEventSource.asObservable();
 
 
   constructor(private http: HttpClient,
@@ -27,6 +27,7 @@ export class AuthenticationService {
     //             .pipe(map(resp => {
     //                 if (resp && resp.apiKey) {
     //                     localStorage.setItem('apiKey', resp.apiKey);
+    //                     localStorage.setItem('username', userData.username);
     //                 }
 
     //                 return of(resp);
@@ -39,19 +40,19 @@ export class AuthenticationService {
 
   getUserName(): string {
     if (this.isLoggedIn()) {
-      return localStorage.getItem('apiKey');
+      return localStorage.getItem('username');
     }
     
     return null;
   }
 
   userLoginEvent() {
-    this.logOutEventSource.next();
+    this.logInEventSource.next();
   }
 
   logOut(): void {
       localStorage.removeItem('apiKey');
       localStorage.removeItem('username');
-      this.logOutEventSource.next();
+      this.logInEventSource.next();
   }
 }

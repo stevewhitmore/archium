@@ -18,7 +18,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loginEventSub = this.authenticationService.logOutEvent$
+    this.loginEventSub = this.authenticationService.logInEvent$
         .subscribe(() => {
           this.getUsername();
         });
