@@ -16,22 +16,15 @@ export class AuthenticationService {
               private router: Router) {}
 
   login(username: string, password: string): any {
-    const userData = {
-      apiKey: 'foobar',
-      username: 'moocows'
-    }
-    localStorage.setItem('apiKey', userData.apiKey);
-    localStorage.setItem('username', userData.username);
-    return of(userData);
-    // return this.http.post<any>(`services/login/api.php`, { username, password })
-    //             .pipe(map(resp => {
-    //                 if (resp && resp.apiKey) {
-    //                     localStorage.setItem('apiKey', resp.apiKey);
-    //                     localStorage.setItem('username', userData.username);
-    //                 }
+    return this.http.post<any>(`archium-services/login/api.php`, { username, password })
+                .pipe(map(resp => {
+                    if (resp && resp.apiKey) {
+                        localStorage.setItem('apiKey', resp.apiKey);
+                        localStorage.setItem('username', resp.username);
+                    }
 
-    //                 return of(resp);
-    //             }));
+                    return of(resp);
+                }));
   }
 
   isLoggedIn(): boolean {
