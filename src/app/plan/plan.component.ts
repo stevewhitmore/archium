@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlanService } from './plan.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plan',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanComponent implements OnInit {
 
+  plans: any;
 
-  constructor() { }
+  constructor(private planService: PlanService) {
+  }
 
   ngOnInit() {
+    this.planService.getPlans()
+      .pipe(take(1))
+      .subscribe(data => {
+        this.plans = data ? data : [];
+      });
   }
 
 }
