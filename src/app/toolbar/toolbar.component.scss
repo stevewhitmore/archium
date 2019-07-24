@@ -1,20 +1,30 @@
 #toolbar-container {
     display: flex;
     justify-content: space-between;
-    background-color: #6ca571;
+    // background-color: #6ca571;
     padding: 1rem;
+    border-bottom: 1px solid;
 
     #left-half {
 
         a {
             text-decoration: none;
-            color: #fff;
-            padding: 10px;
+            color: #000;
+            padding: 15px 80px;
             font-size: 1.25rem;
-            border: 1px solid;
-            &hover {
-                color: red;
+            transition: 0.5s all ease;
+            &:hover {
+                text-decoration: underline;
             }
         }
+    }
+
+    #right-half {
+
+        button.link {
+            background-color: #fff;
+            border: 1px solid;
+        }
+
     }
 }
