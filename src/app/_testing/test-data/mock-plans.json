@@ -1,0 +1,20 @@
+[
+    {
+        "topic": "GoLang",
+        "tags": ["programming"],
+        "summary": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+        "projectedFinishDate": "2020-03-01"
+    },
+    {
+        "topic": "Java GSSP",
+        "tags": ["programming", "security"],
+        "summary": "The GIAC Secure Software Programmers certification allows candidates to demonstrate mastery of the security knowledge and skills needed to deal with common programming errors that lead to most security problems.",
+        "projectedFinishDate": "2020-07-01"
+    },
+    {
+        "topic": "Embedded Electronics",
+        "tags": ["programming", "electronics"],
+        "summary": "An embedded system is a computer system with a dedicated function within a larger mechanical or electrical system.",
+        "projectedFinishDate": "2021-01-01"
+    }
+]

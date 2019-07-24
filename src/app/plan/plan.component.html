@@ -1,0 +1,8 @@
+<div class="container" *ngIf="plans.length > 0">
+    <div class="plan" *ngFor="let plan of plans">
+        <h2>{{plan.topic}}</h2>
+        <div>tags: </div><span *ngFor="let tag of plan.tags">{{tag}}, </span>
+        <p>{{plan.summary}}</p>
+        <b>Projected finish date: {{plan.projectedFinishDate}}</b>
+    </div>
+</div>

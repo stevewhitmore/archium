@@ -10,7 +10,8 @@ import { ToastaModule } from 'ngx-toasta';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './wiki/wiki-menu/wiki-menu.component';
+import { PlanComponent } from './plan/plan.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MenuComponent } from './menu/menu.component';
     HomeComponent,
     LoginComponent,
     ToolbarComponent,
-    MenuComponent
+    MenuComponent,
+    PlanComponent
   ],
   imports: [
     BrowserModule,
