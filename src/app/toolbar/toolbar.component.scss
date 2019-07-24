@@ -1,0 +1,20 @@
+#toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #6ca571;
+    padding: 1rem;
+
+    #left-half {
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            font-size: 1.25rem;
+            border: 1px solid;
+            &hover {
+                color: red;
+            }
+        }
+    }
+}
