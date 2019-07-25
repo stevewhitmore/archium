@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { PlanService } from './plan.service';
 
-fdescribe('PlanService', () => {
+describe('PlanService', () => {
   let planService: PlanService;
   let httpTestingController: HttpTestingController;
 
@@ -16,7 +16,7 @@ fdescribe('PlanService', () => {
     });
 
     planService = TestBed.get(PlanService);
-    httpTestingController = TestBed.get(httpTestingController);
+    httpTestingController = TestBed.get(HttpTestingController);
   })
 
   afterEach(() => {
