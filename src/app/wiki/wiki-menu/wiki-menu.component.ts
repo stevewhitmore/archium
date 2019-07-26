@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-wiki-menu',
@@ -6,10 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wiki-menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  pageMenuActive: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  pageMenuClicked($event) {
+    $event.preventDefault();
+    $event.stopPropagation(); 
+    this.togglePageMenuActive();
+  }
+
+  @HostListener('document:click', ['$event']) clickedOutside($event){
+    this.togglePageMenuActive();
+  }
+
+  togglePageMenuActive() {
+    this.pageMenuActive = !this.pageMenuActive;
   }
 
 }

@@ -1,7 +1,24 @@
-<div id="toolbar-container">
+<div id="toolbar-container" [ngClass]="{'wiki': location.pathname === 'wiki'}">
     <div id="left-half">
-        <a [routerLink]="['/']">Home</a>
-        <a [routerLink]="['/plan']">Plan</a>
+        <a [routerLink]="['/home']"      
+           #homeLink 
+           (click)="updateToolbarClassList(homeLink.textContent)">
+            <svg viewBox="0 0 24 24">
+                    <path fill="#fff" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+            </svg>
+        </a>
+        <a [routerLink]="['/wiki']" 
+           routerLinkActive="router-link-active"   
+           #wikiLink 
+           (click)="updateToolbarClassList(wikiLink.textContent)">
+                Wiki
+        </a>
+        <a [routerLink]="['/plan']" 
+           routerLinkActive="router-link-active"
+           #planLink 
+           (click)="updateToolbarClassList(planLink.textContent)">
+                Plan
+        </a>
     </div>
     <div id="right-half">
         <div *ngIf="username; else loggedOut">
