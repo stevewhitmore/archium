@@ -1,3 +1,11 @@
-:host ::ng-deep .container {
-    margin: 0 8px;
+$green: #6ca571;
+$blue: #6c88a5;
+$redish: #a56c6c;
+
+@mixin buttonBasics {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s all ease;
 }

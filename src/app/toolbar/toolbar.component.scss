@@ -1,32 +1,35 @@
-$primaryColor: #6ca571;
+@import "../app.component.scss";
 
-@mixin inverseToolbarLinkColors {
-    background-color: #fff;
-    color: $primaryColor;
-}
 
 #toolbar-container {
     display: flex;
     justify-content: space-between;
-    background-color: $primaryColor;
-    padding: 1rem 1rem 1rem 0;
+    background-color: $green;
 
     #left-half {
-
+        display: flex;
+        svg {
+            width: 40px;
+            height: 40px;
+        }
         a {
+            display: block;
             text-decoration: none;
             color: #fff;
             padding: 25px 80px;
             font-size: 1.25rem;
             transition: 0.5s all ease;
+            align-self: center;
             &.router-link-active {
-                @include inverseToolbarLinkColors();
+                background-color: #fff;
+                color: $green;
             }
             &:hover {
-                @include inverseToolbarLinkColors();
+                background-color: #fff;
+                color: $green;
             }
             &:first-child {
-                padding: 25px 20px;
+                padding: 10px 30px;
                 &:hover {
                     background-color: transparent;
                     color: #fff;
@@ -34,13 +37,58 @@ $primaryColor: #6ca571;
             }
         }
     }
-
     #right-half {
-
         button.link {
-            background-color: #fff;
+            @include buttonBasics();
             border: 1px solid;
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 0.5rem 1rem;
+            margin: 1rem;
+            &:hover {
+                background-color: #fff;
+                color: $green;
+            }
         }
-
+    }
+}
+#toolbar-container.wiki {
+    background-color: $blue;
+    #left-half {
+        a {
+            &.router-link-active {
+                color: $blue;
+            }
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+    #right-half {
+        button.link {
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}
+#toolbar-container.plan {
+    background-color: $redish;
+    #left-half {
+        a {
+            &.router-link-active {
+                color: $redish;
+            }
+            &:hover {
+                color: $redish;
+            }
+        }
+    }
+    #right-half {
+        button.link {
+            &:hover {
+                color: $redish;
+            }
+        }
     }
 }

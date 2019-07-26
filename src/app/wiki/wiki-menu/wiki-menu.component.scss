@@ -1,0 +1,38 @@
+@import "../../app.component.scss";
+
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100vh;
+    background-color: $blue;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    svg {
+        width: 40px;
+        height: 40px;
+        transition: 0.5s all ease;
+    }
+    button {
+        @include buttonBasics();
+        padding: 25px 0;
+    }
+    #page-menu-wrap {
+        display: grid;
+    }
+}
+@media (min-width: 1024px) {
+    aside {
+        button {
+            &:hover {
+                background-color: #525252;
+            }
+            &.active {
+                background-color: #525252;
+                svg {
+                    transform: rotate(90deg)
+                }
+            }
+        }
+    }
+}
