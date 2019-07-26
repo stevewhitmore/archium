@@ -24,11 +24,11 @@ aside {
 @media (min-width: 1024px) {
     aside {
         button {
-            &:hover {
-                background-color: #525252;
+            &:hover, &:focus {
+                background-color: $accent;
             }
             &.active {
-                background-color: #525252;
+                background-color: $accent;
                 svg {
                     transform: rotate(90deg)
                 }

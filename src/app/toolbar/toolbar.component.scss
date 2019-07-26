@@ -23,16 +23,19 @@
             &.router-link-active {
                 background-color: #fff;
                 color: $green;
+                outline: none;
             }
-            &:hover {
+            &:hover, &:focus {
                 background-color: #fff;
                 color: $green;
+                outline: none;
             }
             &:first-child {
-                padding: 10px 30px;
-                &:hover {
-                    background-color: transparent;
+                padding: 14px 30px;
+                &:hover, &:focus {
+                    background-color: $accent;
                     color: #fff;
+                    outline: none;
                 }
             }
         }
@@ -45,7 +48,7 @@
             font-size: 1.25rem;
             padding: 0.5rem 1rem;
             margin: 1rem;
-            &:hover {
+            &:hover, &:focus {
                 background-color: #fff;
                 color: $green;
             }
@@ -59,8 +62,13 @@
             &.router-link-active {
                 color: $blue;
             }
-            &:hover {
+            &:hover, &:focus {
                 color: $blue;
+            }
+            &:first-child {
+                &:hover, &:focus {
+                    background-color: #525252;
+                }
             }
         }
     }
@@ -79,14 +87,14 @@
             &.router-link-active {
                 color: $redish;
             }
-            &:hover {
+            &:hover, &:focus {
                 color: $redish;
             }
         }
     }
     #right-half {
         button.link {
-            &:hover {
+            &:hover, &:focus {
                 color: $redish;
             }
         }
