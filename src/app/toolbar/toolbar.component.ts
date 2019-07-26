@@ -26,6 +26,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.getUsername();
   }
 
+  viewChange(viewLink) {
+    console.log(viewLink);
+  }
+
   getUsername() {
     this.username = this.authenticationService.getUserName();
   }
