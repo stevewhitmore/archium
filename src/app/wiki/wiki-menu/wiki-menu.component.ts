@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
   pageMenuClicked($event) {
     $event.preventDefault();
     $event.stopPropagation(); 
-    console.log("CLICKED INSIDE, MENU WON'T HIDE");
     this.togglePageMenuActive();
   }
 
