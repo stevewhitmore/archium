@@ -6,7 +6,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./wiki-menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  active: boolean = false;
+  pageMenuActive: boolean = false;
 
   constructor() { }
 
@@ -17,15 +17,15 @@ export class MenuComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation(); 
     console.log("CLICKED INSIDE, MENU WON'T HIDE");
-    this.toggleActive();
+    this.togglePageMenuActive();
   }
 
   @HostListener('document:click', ['$event']) clickedOutside($event){
-    console.log("CLICKED OUTSIDE, MENU WILL HIDE");
+    this.togglePageMenuActive();
   }
 
-  toggleActive() {
-    this.active = !this.active;
+  togglePageMenuActive() {
+    this.pageMenuActive = !this.pageMenuActive;
   }
 
 }
