@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'plan', component: PlanComponent },
   { path: 'wiki', component: WikiComponent },
-  // { path: 'wiki/:page', component: WikiComponent, canActivate: [AuthGuard] },
+  { path: 'wiki/:page', component: WikiComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'home' }
 ];
