@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { AuthenticationService } from '../authentication.service';
-import { Subscription } from 'rxjs';
-import { NotificationService } from 'src/app/shared/notification.service';
+import { AuthenticationService } from '../../security/authentication.service';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,7 @@ import { NotificationService } from 'src/app/shared/notification.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Output() toggleLoginModal: EventEmitter<any> = new EventEmitter();
   loginForm: FormGroup;
   returnUrl: string;
   loginSub: Subscription;
@@ -47,13 +48,14 @@ export class LoginComponent implements OnInit {
                               .pipe(take(1))
                               .subscribe(() => {
                                 this.notificationService.notify('success', 'Login successful!');
-                                this.router.navigate([this.returnUrl]);
                                 this.authenticationService.userLoginEvent();
                               }, error => {
                                 this.notificationService.notify('error', error.message);
                               });
+  }
 
-
+  clickedCancel() {
+    this.toggleLoginModal.emit();
   }
 
 }

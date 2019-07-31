@@ -10,12 +10,13 @@ import { take } from 'rxjs/operators';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit, OnDestroy {
+export class ToolbarComponent implements OnInit {
 
   username: string;
   loginEventSub: Subscription;
   currentRoute: string;
   toolbarContainerEl: any;
+  loginModalOn = false;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
@@ -23,12 +24,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loginEventSub = this.authenticationService.logInEvent$
-        .subscribe(() => {
-          this.getUsername();
-        });
-
-    this.getUsername();
     this.setInitialToolbarStyling();
   }
 
@@ -64,13 +59,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  getUsername() {
-    this.username = this.authenticationService.getUserName();
-  }
-
   logIn() {
     if (!this.authenticationService.isLoggedIn()) {
-      this.router.navigateByUrl('/login');
+      this.toggleLoginModal();
     }
   }
 
@@ -78,8 +69,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.authenticationService.logOut();
   }
 
-  ngOnDestroy() {
-    if (this.loginEventSub) { this.loginEventSub.unsubscribe(); }
+  toggleLoginModal() {
+    this.loginModalOn = !this.loginModalOn;
   }
 
 }
