@@ -1,13 +1,13 @@
 <aside>
     <section id="aside-inner">
         <section id="page-menu-wrap" 
-            (click)="pageMenuClicked($event)"
             [ngClass]="{'active': pageMenuActive}" >
             <button type="button"
-                    id="page-menu" 
-                    aria-label="View Wiki Page Menu">
-                <svg viewBox="0 0 24 24">
-                    <path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                    class="page-menu" 
+                    aria-label="View Wiki Page Menu"
+                    (click)="pageMenuClicked()">
+                <svg class="page-menu" viewBox="0 0 24 24">
+                    <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
                 </svg>
             </button>
             <div id="page-menu-inner">
@@ -40,19 +40,24 @@
         <section id="individual-wiki-page-buttons">
             <button type="button"
                     id="add-new-page" 
-                    aria-label="Add New Wiki Page">
+                    aria-label="Add New Wiki Page"
+                    [disabled]="!userIsLoggedIn">
                 <svg viewBox="0 0 24 24">
-                    <path fill="#fff" d="M17,14H19V17H22V19H19V22H17V19H14V17H17V14M5,3H19C20.11,3 21,3.89 21,5V12.8C20.39,12.45 19.72,12.2 19,12.08V5H5V19H12.08C12.2,19.72 12.45,20.39 12.8,21H5C3.89,21 3,20.11 3,19V5C3,3.89 3.89,3 5,3M7,7H17V9H7V7M7,11H17V12.08C16.15,12.22 15.37,12.54 14.68,13H7V11M7,15H12V17H7V15Z" />
+                    <path d="M17,14H19V17H22V19H19V22H17V19H14V17H17V14M5,3H19C20.11,3 21,3.89 21,5V12.8C20.39,12.45 19.72,12.2 19,12.08V5H5V19H12.08C12.2,19.72 12.45,20.39 12.8,21H5C3.89,21 3,20.11 3,19V5C3,3.89 3.89,3 5,3M7,7H17V9H7V7M7,11H17V12.08C16.15,12.22 15.37,12.54 14.68,13H7V11M7,15H12V17H7V15Z" />
                 </svg>
             </button>
-            <button id="edit-page" aria-label="Edit Current Wiki Page">
+            <button id="edit-page" 
+                    aria-label="Edit Current Wiki Page"
+                    [disabled]="!userIsLoggedIn">
                 <svg viewBox="0 0 24 24">
-                    <path fill="#fff" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                 </svg>
             </button>
-            <button id="delete-page" aria-label="Delete Current Wiki Page">
+            <button id="delete-page" 
+                    aria-label="Delete Current Wiki Page"
+                    [disabled]="!userIsLoggedIn">
                 <svg viewBox="0 0 24 24">
-                    <path fill="#fff" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
+                    <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
                 </svg>
             </button>
         </section>

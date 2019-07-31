@@ -5,7 +5,7 @@
     right: 20px;
     top: 0;
     padding: 20px 20px 0;
-    background-color: #525252;
+    background-color: $accent;
     form#login-form {
         display: flex;
         flex-direction: column;
@@ -15,9 +15,9 @@
         }
         #login-form-button, #login-form-cancel {
             @include buttonBasics();
-            background-color: #3f51b5;
+            background-color: $blue;
             color: #fff;
-            border: 1px solid #525252;
+            border: 1px solid $accent;
 
             font-size: 1.25rem;
             padding: 0.5rem 1rem;
@@ -28,7 +28,7 @@
             }
         }
         #login-form-cancel {
-            background-color: #525252;
+            background-color: $accent;
             color: #fff;
             &:hover, &:focus {
                 border: 1px solid #fff;

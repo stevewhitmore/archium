@@ -31,14 +31,6 @@ export class AuthenticationService {
     return localStorage.getItem('apiKey') !== null;
   }
 
-  getUserName(): string {
-    if (this.isLoggedIn()) {
-      return localStorage.getItem('username');
-    }
-    
-    return null;
-  }
-
   userLoginEvent() {
     this.logInEventSource.next();
   }

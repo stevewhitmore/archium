@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -19,8 +18,6 @@ export class LoginComponent implements OnInit {
   loginSub: Subscription;
 
   constructor(private fb: FormBuilder,
-              private route: ActivatedRoute,
-              private router: Router,
               private authenticationService: AuthenticationService,
               private notificationService: NotificationService) {
   }
@@ -29,8 +26,6 @@ export class LoginComponent implements OnInit {
     this.buildForm();
 
     this.authenticationService.logOut();
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   buildForm() {

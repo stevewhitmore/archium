@@ -53,8 +53,6 @@
             align-self: center;
             &:hover, &:focus {
                 border: 1px solid #fff;
-                // background-color: #fff;
-                // color: $green;
             }
         }
     }
@@ -69,18 +67,6 @@
             &:hover, &:focus {
                 color: $blue;
             }
-            &:first-child {
-                &:hover, &:focus {
-                    background-color: #525252;
-                }
-            }
-        }
-    }
-    #right-half {
-        button.link {
-            &:hover {
-                color: $blue;
-            }
         }
     }
 }
@@ -91,13 +77,6 @@
             &.router-link-active {
                 color: $redish;
             }
-            &:hover, &:focus {
-                color: $redish;
-            }
-        }
-    }
-    #right-half {
-        button.link {
             &:hover, &:focus {
                 color: $redish;
             }
