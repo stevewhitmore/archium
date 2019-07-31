@@ -10,13 +10,15 @@ import { take } from 'rxjs/operators';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, OnDestroy {
 
   username: string;
   loginEventSub: Subscription;
   currentRoute: string;
   toolbarContainerEl: any;
+  loginStatusSub: Subscription;
   loginModalOn = false;
+  userIsLoggedIn = false;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
@@ -24,6 +26,11 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginStatusSub = this.authenticationService.logInEvent$.subscribe(() => {
+      this.checkLoginStatus();
+    });
+
+    this.checkLoginStatus();
     this.setInitialToolbarStyling();
   }
 
@@ -61,9 +68,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   logIn() {
-    if (!this.authenticationService.isLoggedIn()) {
-      this.toggleLoginModal();
-    }
+    this.toggleLoginModal();
   }
 
   logOut() {
@@ -72,6 +77,14 @@ export class ToolbarComponent implements OnInit {
 
   toggleLoginModal() {
     this.loginModalOn = !this.loginModalOn;
+  }
+
+  checkLoginStatus() {
+    this.userIsLoggedIn = this.authenticationService.isLoggedIn();
+  }
+
+  ngOnDestroy() {
+    if (this.loginStatusSub) this.loginStatusSub.unsubscribe();
   }
 
 }

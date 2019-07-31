@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { WikiService } from '../wiki.service';
@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/security/authentication.service';
   templateUrl: './wiki-menu.component.html',
   styleUrls: ['./wiki-menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   pageMenuActive: boolean = false;
   pageMenuItems = [];
   filteredMenuItems = [];
@@ -28,6 +28,7 @@ export class MenuComponent implements OnInit {
         this.checkLoginStatus();
       });
 
+      this.checkLoginStatus();
       this.getAllPagePaths();
   }
 
@@ -59,6 +60,10 @@ export class MenuComponent implements OnInit {
 
   checkLoginStatus() {
     this.userIsLoggedIn = this.authenticationService.isLoggedIn();
+  }
+
+  ngOnDestroy() {
+    if (this.loginStatusSub) this.loginStatusSub.unsubscribe();
   }
 
 }

@@ -44,8 +44,9 @@ export class LoginComponent implements OnInit {
                               .subscribe(() => {
                                 this.notificationService.notify('success', 'Login successful!');
                                 this.authenticationService.userLoginEvent();
+                                this.toggleLoginModal.emit();
                               }, error => {
-                                this.notificationService.notify('error', error.message);
+                                this.notificationService.notify('error', 'Login unsuccessful :(');
                               });
   }
 
