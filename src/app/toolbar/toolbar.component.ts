@@ -34,11 +34,12 @@ export class ToolbarComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => {
         if (this.location.path() != "") {
-          this.currentRoute = this.location.path();
+          let path = this.location.path();
+          this.currentRoute = path.slice(1).split('/', 1)[0];
         } else {
-          this.currentRoute = "/home";
+          this.currentRoute = "home";
         }
-        this.toolbarContainerEl.classList.add(this.currentRoute.slice(1));
+        this.toolbarContainerEl.classList.add(this.currentRoute);
       });
   }
 
