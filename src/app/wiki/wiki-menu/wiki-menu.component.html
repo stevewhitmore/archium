@@ -22,7 +22,7 @@
                             #filterInput
                             (keyup)="filterMenuItems(filterInput.value)">
                 </span>
-                <nav>
+                <nav (click)="toggleMenuOff()">
                     <ul *ngIf="filteredMenuItems.length === 0">
                         <li *ngFor="let item of pageMenuItems">
                             <a [routerLink]="'/wiki/' + item.path">{{item.title}}</a>

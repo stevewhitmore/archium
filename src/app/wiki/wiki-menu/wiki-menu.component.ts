@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { WikiService } from '../wiki.service';
@@ -20,7 +20,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   constructor(private wikiService: WikiService,
               private notificationService: NotificationService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private eRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -44,6 +45,17 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   pageMenuClicked() {
     this.togglePageMenuActive();
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(!this.eRef.nativeElement.contains(event.target)) {
+      this.toggleMenuOff()
+    }
+  }
+
+  toggleMenuOff() {
+    this.pageMenuActive = false;
   }
 
   togglePageMenuActive() {
