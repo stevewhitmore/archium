@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { NotificationService } from './notification.service';
 import { ToastaService } from 'ngx-toasta';
-import { ToastaServiceStub } from '../_testing/toasta-service.stub';
+import { ToastaServiceStub } from './testing/toasta-service.stub';
 
 const toastaServiceStub = new ToastaServiceStub();
 

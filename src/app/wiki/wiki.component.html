@@ -1,4 +1,5 @@
-<app-wiki-menu></app-wiki-menu>
+<app-wiki-menu (toggleCreateModalEvent)="handleCreateModalEvent($event)"></app-wiki-menu>
 <section *ngIf="pageContent" id="page-wrap">
     <app-wiki-view [pageContent]="pageContent"></app-wiki-view>
 </section>
+<app-wiki-add *ngIf="addFormOn"></app-wiki-add>

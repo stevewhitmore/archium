@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlanComponent } from './plan.component';
 import { PlanService } from './plan.service';
-import { PlanServiceStub } from '../_testing/plan-service.stub';
+import { PlanServiceStub } from '../_shared/testing/plan-service.stub';
 
 const planServiceStub = new PlanServiceStub;
 

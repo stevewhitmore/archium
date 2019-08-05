@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
-import { WikiModel } from 'src/app/_models';
+import { WikiModel } from 'src/app/_shared/models';
 
 @Component({
   selector: 'app-wiki-view',

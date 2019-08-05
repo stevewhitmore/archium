@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 
-const mockData = require('../_testing/test-data/mock-plans.json');
+const mockData = require('../_shared/testing/test-data/mock-plans.json');
 
 @Injectable()
 export class PlanServiceStub {

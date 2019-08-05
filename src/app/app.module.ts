@@ -14,6 +14,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './wiki/wiki-menu/wiki-menu.component';
 import { PlanComponent } from './plan/plan.component';
 import { WikiViewComponent } from './wiki/wiki-view/wiki-view.component';
+import { WikiAddComponent } from './wiki/wiki-add/wiki-add.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WikiViewComponent } from './wiki/wiki-view/wiki-view.component';
     ToolbarComponent,
     MenuComponent,
     PlanComponent,
-    WikiViewComponent
+    WikiViewComponent,
+    WikiAddComponent
   ],
   imports: [
     BrowserModule,
