@@ -14,7 +14,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): any {
-    return this.http.post<any>(`archium-services/login/api.php`, { username, password })
+    return this.http.post<any>(`http://localhost/archium-services/login/api.php`, { username, password })
                 .pipe(map(resp => {
                     if (resp && resp.apiKey) {
                         localStorage.setItem('apiKey', resp.apiKey);

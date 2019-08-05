@@ -25,12 +25,12 @@
                 <nav>
                     <ul *ngIf="filteredMenuItems.length === 0">
                         <li *ngFor="let item of pageMenuItems">
-                            <a [routerLink]="'/wiki' + item.path">{{item.title}}</a>
+                            <a [routerLink]="'/wiki/' + item.path">{{item.title}}</a>
                         </li> 
                     </ul>
                     <ul>
                         <li *ngFor="let filteredItem of filteredMenuItems">
-                            <a [routerLink]="'/wiki' + filteredItem.path">{{filteredItem.title}}</a>
+                            <a [routerLink]="'/wiki/' + filteredItem.path">{{filteredItem.title}}</a>
                         </li>
                     </ul>
                       

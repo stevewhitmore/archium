@@ -1,6 +1,6 @@
 {
-    "/archium-services/*": {
-        "target": "http://localhost",
+    "/services/*": {
+        "target": "http://localhost/services",
         "secure": false,
         "changeOrigin": true
     }
