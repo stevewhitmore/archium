@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { WikiModel } from '../_models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,11 @@ export class WikiService {
   }
 
   getAllPageLinks() {
-    const tempPageNames = [
-      { path: '/foo', title: 'Foo' },
-      { path: '/bar', title: 'Bar' },
-      { path: '/baz', title: 'Baz' },
-      { path: '/bunnies', title: 'Bunnies' }
-    ]
+    return <Observable<any>>this.http.get('http://localhost/archium-services/wiki/index.php?path=all');
+  }
 
-    return of(tempPageNames);
+  getPageContent(path: string): Observable<WikiModel> {
+    return <Observable<WikiModel>>this.http.get(`http://localhost/archium-services/wiki/index.php?path=${path}`);
   }
 
 }

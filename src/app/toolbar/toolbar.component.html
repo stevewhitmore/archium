@@ -21,18 +21,6 @@
         </a>
     </div>
     <div id="right-half">
-        <div *ngIf="username; else loggedOut">
-            <span>Welcome <strong>{{username}}</strong></span>
-            |
-            <button class="link" (click)="logOut()">Log Out</button>
-        </div>
-        <ng-template #loggedOut>
-            <button *ngIf="!loginModalOn"
-                    class="link" 
-                    (click)="logIn()">Log In</button>
-        </ng-template>
-
-        <app-login *ngIf="loginModalOn"
-                    (toggleLoginModal)="toggleLoginModal()"></app-login>
+        <app-login></app-login>
     </div>
 </div>

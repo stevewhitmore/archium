@@ -42,19 +42,7 @@
         }
     }
     #right-half {
-        display: flex;
-        button.link {
-            @include buttonBasics();
-            border: 1px solid transparent;
-            color: #fff;
-            font-size: 1.25rem;
-            padding: 0.5rem 1rem;
-            margin: 1rem;
-            align-self: center;
-            &:hover, &:focus {
-                border: 1px solid #fff;
-            }
-        }
+        display: flex;        
     }
 }
 #toolbar-container.wiki {

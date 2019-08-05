@@ -16,7 +16,6 @@ export class ToolbarComponent implements OnInit {
   loginEventSub: Subscription;
   currentRoute: string;
   toolbarContainerEl: any;
-  loginModalOn = false;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
@@ -24,6 +23,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.setInitialToolbarStyling();
   }
 
@@ -58,20 +58,6 @@ export class ToolbarComponent implements OnInit {
     while (classList.length > 0) {
        classList.remove(classList.item(0));
     }
-  }
-
-  logIn() {
-    if (!this.authenticationService.isLoggedIn()) {
-      this.toggleLoginModal();
-    }
-  }
-
-  logOut() {
-    this.authenticationService.logOut();
-  }
-
-  toggleLoginModal() {
-    this.loginModalOn = !this.loginModalOn;
   }
 
 }

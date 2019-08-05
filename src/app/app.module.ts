@@ -13,6 +13,7 @@ import { LoginComponent } from './toolbar/login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './wiki/wiki-menu/wiki-menu.component';
 import { PlanComponent } from './plan/plan.component';
+import { WikiViewComponent } from './wiki/wiki-view/wiki-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlanComponent } from './plan/plan.component';
     LoginComponent,
     ToolbarComponent,
     MenuComponent,
-    PlanComponent
+    PlanComponent,
+    WikiViewComponent
   ],
   imports: [
     BrowserModule,

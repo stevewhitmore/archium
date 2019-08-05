@@ -1,6 +1,9 @@
 @import "../../app.component.scss";
 
 aside {
+    position: absolute;
+    top: 70px;
+    left: 0;
     display: flex;
     flex-direction: column;
     width: 100px;

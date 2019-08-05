@@ -1,2 +1,4 @@
 <app-wiki-menu></app-wiki-menu>
-<p>wiki works!</p>
+<section *ngIf="pageContent" id="page-wrap">
+    <app-wiki-view [pageContent]="pageContent"></app-wiki-view>
+</section>
