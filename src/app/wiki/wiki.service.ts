@@ -12,11 +12,11 @@ export class WikiService {
   }
 
   getAllPageLinks() {
-    return <Observable<any>>this.http.get('/services/wiki/index.php?path=all');
+    return <Observable<any>>this.http.get('http://localhost/archium-services/wiki/index.php?path=all');
   }
 
   getPageContent(path: string): Observable<WikiModel> {
-    return <Observable<WikiModel>>this.http.get(`/services/wiki/index.php?path=${path}`);
+    return <Observable<WikiModel>>this.http.get(`http://localhost/archium-services/wiki/index.php?path=${path}`);
   }
 
 }
