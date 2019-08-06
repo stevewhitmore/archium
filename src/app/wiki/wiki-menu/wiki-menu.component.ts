@@ -12,6 +12,7 @@ import { AuthenticationService } from 'src/app/_shared/security/authentication.s
   styleUrls: ['./wiki-menu.component.scss']
 })
 export class MenuComponent implements OnInit, OnDestroy {
+  @Output() toggleEditEvent = new EventEmitter();
   @Output() toggleCreateModalEvent = new EventEmitter();
   pageMenuActive: boolean = false;
   pageMenuItems = [];
@@ -75,8 +76,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.userIsLoggedIn = this.authenticationService.isLoggedIn();
   }
 
+  toggleEdit() {
+    this.toggleEditEvent.emit(null);    
+  }
+
   toggleCreateModal() {
-    console.log('toggleCreateModal inside menu');
     this.toggleCreateModalEvent.emit(null);
   }
 

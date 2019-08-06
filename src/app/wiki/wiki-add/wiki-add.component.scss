@@ -1,0 +1,35 @@
+@import "../../app.component.scss";
+
+#add-page-modal {
+    position: absolute;
+    left: 100px;
+    top: 100px;    
+    padding: 5rem;    
+    background-color: $accent;
+
+    input {
+        padding: 10px;
+        font-size: 16px;
+    }
+    button {
+        @include buttonBasics();
+        background-color: $green;
+        color: #fff;
+        border: 1px solid $accent;
+
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        margin: 1rem;
+        align-self: center;
+        &:hover, &:focus {
+            border: 1px solid #fff;
+        }
+    }
+    #cancel-add-page-btn {
+        background-color: $accent;
+        color: #fff;
+        &:hover, &:focus {
+            border: 1px solid #fff;
+        }
+    }
+}

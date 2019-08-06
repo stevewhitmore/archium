@@ -15,6 +15,8 @@ import { MenuComponent } from './wiki/wiki-menu/wiki-menu.component';
 import { PlanComponent } from './plan/plan.component';
 import { WikiViewComponent } from './wiki/wiki-view/wiki-view.component';
 import { WikiAddComponent } from './wiki/wiki-add/wiki-add.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { WikiEditComponent } from './wiki/wiki-edit/wiki-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +28,16 @@ import { WikiAddComponent } from './wiki/wiki-add/wiki-add.component';
     MenuComponent,
     PlanComponent,
     WikiViewComponent,
-    WikiAddComponent
+    WikiAddComponent,
+    WikiEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastaModule.forRoot()
+    ToastaModule.forRoot(),
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

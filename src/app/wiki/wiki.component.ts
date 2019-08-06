@@ -14,6 +14,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   path: string = 'default';
   pageContent: any;
+  editFormOn = false;
   addFormOn = false;
 
   constructor(private route: ActivatedRoute,
@@ -40,9 +41,23 @@ export class WikiComponent implements OnInit, OnDestroy {
       });
   }
 
+  savePageEdits(page) {
+    this.wikiService.savePageChanges(page)
+      .subscribe(resp => {
+        
+      })
+  }
+
+  handleEditEvent() {
+    this.toggleEditForm();
+  }
+
   handleCreateModalEvent() {
-    console.log('parent handleCreateModalEvent');
     this.toggleAddFormOn();
+  }
+
+  toggleEditForm() {
+    this.editFormOn = !this.editFormOn;
   }
 
   toggleAddFormOn() {

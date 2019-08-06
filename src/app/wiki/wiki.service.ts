@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { WikiModel } from '../_shared/models';
 // import { Url } from '@enums';
@@ -21,15 +21,20 @@ export class WikiService {
     return <Observable<WikiModel>>this.http.get(`${Url.WIKI_CONTEXT}index.php?path=${path}`);
   }
 
+  savePageChanges(page: WikiModel) {
+
+  }
+
   createPage(pageTitle: string): Observable<any> {
     const createdWiki = {
       title: pageTitle
     }
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
+    const data = JSON.stringify(createdWiki);
 
-    return <Observable<any>>this.http.post<WikiModel>(Url.WIKI_CONTEXT, createdWiki, {observe: 'response'});
+    return <Observable<any>>this.http.post(Url.WIKI_CONTEXT, data, {headers: headers});
   }
 
 
