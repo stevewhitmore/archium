@@ -1,0 +1,21 @@
+<section>
+    <input type="text"
+           [formControl]="wikiTitle"/>
+    <textarea placeholder="Page content..."
+              [formControl]="wikiContent"></textarea>
+        
+
+    <div id="save-cancel">
+        <button id="cancel"
+                title="Cancel changes" 
+                (click)="cancelEdit()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <span>Cancel</span>
+        </button>
+        <button id="save"
+                title="Save wiki entry"
+                (click)="saveEdit()">
+        <span>Save</span>
+        </button>
+    </div>
+</section>

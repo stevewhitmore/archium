@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthenticationServiceStub } from '../_testing/authentication-service.stub';
-import { AuthenticationService } from '../security/authentication.service';
+import { AuthenticationServiceStub } from '../_shared/testing/authentication-service.stub';
+import { AuthenticationService } from '../_shared/security/authentication.service';
 
 const authenticationServiceStub = new AuthenticationServiceStub();
 

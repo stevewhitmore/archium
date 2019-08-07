@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthenticationServiceStub } from 'src/app/_testing/authentication-service.stub';
+import { AuthenticationServiceStub } from 'src/app/_shared/testing/authentication-service.stub';
 import { AuthenticationService } from '../authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NotificationService } from 'src/app/shared/notification.service';
-import { NotificationServiceStub } from 'src/app/_testing/notification-service.stub';
+import { NotificationService } from 'src/app/_shared/notification.service';
+import { NotificationServiceStub } from 'src/app/_shared/testing/notification-service.stub';
 
 const authenticationServiceStub = new AuthenticationServiceStub();
 const notificationServiceStub = new NotificationServiceStub();

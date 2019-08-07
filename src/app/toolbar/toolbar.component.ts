@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthenticationService } from '../security/authentication.service';
+import { AuthenticationService } from '../_shared/security/authentication.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Location } from "@angular/common";
@@ -11,14 +11,12 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-
   username: string;
   loginEventSub: Subscription;
   currentRoute: string;
   toolbarContainerEl: any;
 
-  constructor(private authenticationService: AuthenticationService,
-              private router: Router,
+  constructor(private router: Router,
               private location: Location) {
   }
 

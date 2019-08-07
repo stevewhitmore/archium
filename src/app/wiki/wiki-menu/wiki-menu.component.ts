@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { WikiService } from '../wiki.service';
-import { NotificationService } from '../../shared/notification.service';
+import { NotificationService } from '../../_shared/notification.service';
 import { Subscription } from 'rxjs';
-import { AuthenticationService } from 'src/app/security/authentication.service';
+import { AuthenticationService } from 'src/app/_shared/security/authentication.service';
 
 @Component({
   selector: 'app-wiki-menu',
@@ -12,6 +12,8 @@ import { AuthenticationService } from 'src/app/security/authentication.service';
   styleUrls: ['./wiki-menu.component.scss']
 })
 export class MenuComponent implements OnInit, OnDestroy {
+  @Output() toggleEditEvent = new EventEmitter();
+  @Output() toggleCreateModalEvent = new EventEmitter();
   pageMenuActive: boolean = false;
   pageMenuItems = [];
   filteredMenuItems = [];
@@ -72,6 +74,16 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   checkLoginStatus() {
     this.userIsLoggedIn = this.authenticationService.isLoggedIn();
+  }
+
+  toggleEdit() {
+    // this.toggleEditEvent.emit(null); 
+    const page = { title: 'foopppooooop' }   
+    this.wikiService.savePageChanges(page).subscribe(resp => {console.log(resp.message)});
+  }
+
+  toggleCreateModal() {
+    this.toggleCreateModalEvent.emit(null);
   }
 
   ngOnDestroy() {

@@ -19,7 +19,8 @@
       "dom"
     ],
     "paths": {
-      "@models/*": ["app/_models/index.ts"]
+      "@models/*": ["app/_models/index.ts"],
+      "@enums": ["app/_shared/enums/index.ts"]
     }
   },
   "angularCompilerOptions": {

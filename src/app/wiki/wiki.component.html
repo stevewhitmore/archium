@@ -1,4 +1,10 @@
-<app-wiki-menu></app-wiki-menu>
+<app-wiki-menu (toggleCreateModalEvent)="handleCreateModalEvent($event)"
+               (toggleEditEvent)="handleEditEvent($event)"></app-wiki-menu>
 <section *ngIf="pageContent" id="page-wrap">
-    <app-wiki-view [pageContent]="pageContent"></app-wiki-view>
+    <app-wiki-view *ngIf="!editFormOn" 
+                   [pageContent]="pageContent"></app-wiki-view>
+    <app-wiki-edit *ngIf="editFormOn" 
+                   [pageContent]="pageContent"
+                   (saveEditsEvent)="savePageEdits($event)"></app-wiki-edit>
 </section>
+<app-wiki-add *ngIf="addFormOn"></app-wiki-add>
