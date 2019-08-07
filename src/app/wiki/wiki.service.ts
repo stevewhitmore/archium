@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { of, Observable } from 'rxjs';
+import { of, Observable, throwError } from 'rxjs';
 import { WikiModel } from '../_shared/models';
 // import { Url } from '@enums';
 import {Url} from '../_shared/enums';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,11 @@ export class WikiService {
     });
     const data = JSON.stringify(page);
 
-    console.log(data);
-    return of(null);
-
-    // return <Observable<any>>this.http.put(`${Url.WIKI_CONTEXT}index.php`, data, {headers: headers});
+    return <Observable<any>>this.http
+              .put(`${Url.WIKI_CONTEXT}`, data, {headers: headers})
+              .pipe(
+                catchError(e => throwError(console.log))
+              );
   }
 
   createPage(pageTitle: string): Observable<any> {
