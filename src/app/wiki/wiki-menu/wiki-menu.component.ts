@@ -77,9 +77,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   toggleEdit() {
-    // this.toggleEditEvent.emit(null); 
-    const page = { title: 'foopppooooop' }   
-    this.wikiService.savePageChanges(page).subscribe(resp => {console.log(resp.message)});
+    this.toggleEditEvent.emit(null); 
   }
 
   toggleCreateModal() {
