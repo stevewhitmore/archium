@@ -21,8 +21,16 @@ export class WikiService {
     return <Observable<WikiModel>>this.http.get(`${Url.WIKI_CONTEXT}index.php?path=${path}`);
   }
 
-  savePageChanges(page: WikiModel) {
+  savePageChanges(page): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const data = JSON.stringify(page);
 
+    console.log(data);
+    return of(null);
+
+    // return <Observable<any>>this.http.put(`${Url.WIKI_CONTEXT}index.php`, data, {headers: headers});
   }
 
   createPage(pageTitle: string): Observable<any> {
