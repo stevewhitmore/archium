@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges, EventEmitter, Output } from '@angular/core';
 import { WikiModel } from 'src/app/_shared/models';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-wiki-edit',
@@ -12,29 +12,39 @@ export class WikiEditComponent implements OnChanges {
   @Output() toggleEditModeEvent = new EventEmitter();
   @Output() saveEditsEvent = new EventEmitter();
   currentContent: WikiModel;
-  wikiTitle = new FormControl('');
-  wikiContent = new FormControl('');
+  wikiEditForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.pageContent.currentValue !== changes.pageContent.previousValue) {
       this.currentContent = changes.pageContent.currentValue;
-      this.wikiTitle.setValue(this.currentContent.title);
-      this.wikiContent.setValue(this.currentContent.content);
+      this.buildForm();
     }
   }
 
+  buildForm() {
+    this.wikiEditForm = this.fb.group({
+      title: [this.currentContent.title, Validators.required],
+      path: [this.currentContent.path, Validators.required],
+      content: this.currentContent.content
+    });
+  }
+
   saveEdit() {
-    const updatedPage = {
-      pageId: this.currentContent.pageId,
-      title: this.wikiTitle.value,
-      content: this.wikiContent.value,
-      path: this.currentContent.path
-    }
+    const updatedPage = Object.assign({}, this.currentContent, this.wikiEditForm.value)
 
     this.saveEditsEvent.emit(updatedPage);
   }
 
   cancelEdit() {
     this.toggleEditModeEvent.emit(null);
+  }
+
+  pathMatchTitle() {
+    const title = this.wikiEditForm.controls.title.value;
+    const formattedTitle = title.replace(/[^a-z0-9+]+/gi, '-').toLowerCase()
+    this.wikiEditForm.controls.path.setValue(formattedTitle);
   }
 }

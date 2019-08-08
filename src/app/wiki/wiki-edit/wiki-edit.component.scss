@@ -1,16 +1,19 @@
 @import "../../app.component.scss";
 
-section {
+form {
     display: flex;
     flex-direction: column;
     color: $accent;
+    label {
+        margin-top: 10px;
+    }
     input {
         padding: 10px;
         font-size: 1.25rem;
     }
     textarea {
-        height: 70vh;
-        margin-top: 10px;
+        padding: 10px;
+        height: 60vh;
         font-size: 1.25rem;
     }
     #save-cancel {
