@@ -46,12 +46,12 @@ export class WikiComponent implements OnInit, OnDestroy {
   savePageEdits(page) {
     this.wikiService.savePageChanges(page)
       .pipe(take(1))
-      .subscribe(resp => {
+      .subscribe(() => {
+        this.notificationService.notify('success', 'Page successfully updated!');
         this.toggleEditForm();
         this.getPageContent(page.path);
-        this.notificationService.notify('success', resp.message);
-      }, error => {
-        this.notificationService.notify('error', error.message);
+      }, () => {
+        this.notificationService.notify('error', 'Unable to update page');
       })
   }
 
