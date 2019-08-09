@@ -47,6 +47,9 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   pageMenuClicked() {
     this.togglePageMenuActive();
+    if (this.pageMenuActive) {
+      this.getAllPagePaths();
+    }
   }
 
   @HostListener('document:click', ['$event'])
