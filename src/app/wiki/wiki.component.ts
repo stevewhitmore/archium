@@ -17,6 +17,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   pageContent: any;
   editFormOn = false;
   addFormOn = false;
+  deleteConfirmOn = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -67,12 +68,28 @@ export class WikiComponent implements OnInit, OnDestroy {
     });
   }
 
+  deletePage(path) {
+    this.wikiService.deletePage(path)
+    .subscribe(() => {
+      this.notificationService.notify('success', 'Page deleted!');
+      this.toggleDeleteConfirm();
+      this.router.navigateByUrl('/');
+    }, () => {
+      this.notificationService.notify('error', 'Unable to delete page');
+    });
+  }
+
   toggleEditForm() {
     this.editFormOn = !this.editFormOn;
   }
 
   toggleAddForm() {
     this.addFormOn = !this.addFormOn;
+  }
+
+
+  toggleDeleteConfirm() {
+    this.deleteConfirmOn = !this.deleteConfirmOn;
   }
 
   ngOnDestroy() {
