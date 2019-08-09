@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WikiModel } from '../_shared/models';
 import { WikiService } from './wiki.service';
 import { take } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   addFormOn = false;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private wikiService: WikiService,
               private notificationService: NotificationService) {
   }
@@ -47,12 +48,23 @@ export class WikiComponent implements OnInit, OnDestroy {
     this.wikiService.savePageChanges(page)
       .pipe(take(1))
       .subscribe(() => {
-        this.notificationService.notify('success', 'Page successfully updated!');
+        this.notificationService.notify('success', 'Page updated!');
         this.toggleEditForm();
         this.getPageContent(page.path);
       }, () => {
         this.notificationService.notify('error', 'Unable to update page');
       })
+  }
+
+  addNewPage(path) {
+    this.wikiService.createPage(path)
+    .subscribe(() => {
+      this.notificationService.notify('success', 'New page created!');
+      this.toggleAddForm();
+      this.router.navigate(['/wiki/', path]);
+    }, () => {
+      this.notificationService.notify('error', 'Unable to create new page');
+    });
   }
 
   toggleEditForm() {

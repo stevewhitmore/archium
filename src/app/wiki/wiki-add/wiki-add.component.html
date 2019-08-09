@@ -7,7 +7,7 @@
         placeholder="New Page Title" />
     <button id="cancel-add-page-btn"
             title="Cancel" 
-            (click)="toggleCreateModalOff();">Cancel</button>
+            (click)="toggleCreateModal();">Cancel</button>
     <button id="add-page-btn" 
             (click)="createWikiPage(addWikiPage)"
             [disabled]="!inputPath.valid">Add</button>

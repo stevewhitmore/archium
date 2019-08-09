@@ -8,4 +8,6 @@
                    (saveEditsEvent)="savePageEdits($event)"
                    (toggleEditModeEvent)="toggleEditForm()"></app-wiki-edit>
 </section>
-<app-wiki-add *ngIf="addFormOn"></app-wiki-add>
+<app-wiki-add *ngIf="addFormOn"
+              (pageCreatedEvent)="addNewPage($event)"
+              (toggleCreateModalEvent)="toggleAddForm()"></app-wiki-add>
