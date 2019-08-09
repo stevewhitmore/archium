@@ -1,8 +1,19 @@
-<section>
+<form id="edit-page" [formGroup]="wikiEditForm">
+    <label for="title">Title</label>
     <input type="text"
-           [formControl]="wikiTitle"/>
-    <textarea placeholder="Page content..."
-              [formControl]="wikiContent"></textarea>
+           id="title"
+           aria-label="title"
+           formControlName="title"
+           (keyup)="pathMatchTitle()"/>
+    <label for="path">Path</label>
+    <input type="text"
+           id="path"
+           aria-label="path"
+           formControlName="path"/>
+    <label for="content">Content</label>
+    <textarea id="content"
+              aria-label="content"
+              formControlName="content"></textarea>
         
 
     <div id="save-cancel">
@@ -18,4 +29,4 @@
         <span>Save</span>
         </button>
     </div>
-</section>
+</form>

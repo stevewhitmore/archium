@@ -1,0 +1,36 @@
+@import "../../app.component.scss";
+
+form {
+    display: flex;
+    flex-direction: column;
+    color: $accent;
+    label {
+        margin-top: 10px;
+    }
+    input {
+        padding: 10px;
+        font-size: 1.25rem;
+    }
+    textarea {
+        padding: 10px;
+        height: 60vh;
+        font-size: 1.25rem;
+    }
+    #save-cancel {
+        margin-top: 10px;
+        button {
+            @include buttonBasics();
+            font-size: 1.25rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            &:hover {
+                border: 1px solid $accent;
+            }
+            &#save {
+                background-color: $green;
+                color: #fff;
+            }
+        }
+    }
+
+}
