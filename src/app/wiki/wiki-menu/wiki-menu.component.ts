@@ -14,6 +14,7 @@ import { AuthenticationService } from 'src/app/_shared/security/authentication.s
 export class MenuComponent implements OnInit, OnDestroy {
   @Output() toggleEditEvent = new EventEmitter();
   @Output() toggleCreateModalEvent = new EventEmitter();
+  @Output() toggleDeleteModalEvent = new EventEmitter();
   pageMenuActive: boolean = false;
   pageMenuItems = [];
   filteredMenuItems = [];
@@ -85,6 +86,10 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   toggleCreateModal() {
     this.toggleCreateModalEvent.emit(null);
+  }
+
+  toggleDeleteModal() {
+    this.toggleDeleteModalEvent.emit(null);
   }
 
   ngOnDestroy() {
