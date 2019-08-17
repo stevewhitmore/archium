@@ -1,18 +1,23 @@
 @import "../../app.component.scss";
 
-
-button.link {
-    @include buttonBasics();
-    border: 1px solid transparent;
-    color: #fff;
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    align-self: center;
-    &:hover, &:focus {
-        border: 1px solid #fff;
+.login-button-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    button.link {
+        @include buttonBasics();
+        border: 1px solid transparent;
+        color: #fff;
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        margin: 1rem;
+        align-self: center;
+        &:hover, &:focus {
+            border: 1px solid #fff;
+        }
     }
 }
+
 
 #login-container {
     position: absolute;
