@@ -1,5 +1,6 @@
 <app-wiki-menu (toggleCreateModalEvent)="toggleAddForm()"
-               (toggleEditEvent)="toggleEditForm()"></app-wiki-menu>
+               (toggleEditEvent)="toggleEditForm()"
+               (toggleDeleteModalEvent)="toggleDeleteConfirm()"></app-wiki-menu>
 <section *ngIf="pageContent" id="page-wrap">
     <app-wiki-view *ngIf="!editFormOn" 
                    [pageContent]="pageContent"></app-wiki-view>
@@ -8,4 +9,9 @@
                    (saveEditsEvent)="savePageEdits($event)"
                    (toggleEditModeEvent)="toggleEditForm()"></app-wiki-edit>
 </section>
-<app-wiki-add *ngIf="addFormOn"></app-wiki-add>
+<app-wiki-add *ngIf="addFormOn"
+              (pageCreatedEvent)="addNewPage($event)"
+              (toggleCreateModalEvent)="toggleAddForm()"></app-wiki-add>
+<app-wiki-delete *ngIf="deleteConfirmOn && pageContent"
+                 (pageDeleteEvent)="deletePage($event)"
+                 (toggleDeleteModalEvent)="toggleDeleteConfirm()"></app-wiki-delete>

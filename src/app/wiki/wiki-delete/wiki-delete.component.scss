@@ -1,15 +1,14 @@
 @import "../../app.component.scss";
 
-#add-page-modal {
+#delete-page-modal {
     @include popoutModal;
-    
-    input {
-        padding: 10px;
-        font-size: 16px;
+    p {
+        color: #fff;
+        font-size: 1.5rem;
     }
     button {
         @include buttonBasics();
-        background-color: $green;
+        background-color: $red;
         color: #fff;
         border: 1px solid $accent;
         font-size: 1.25rem;
@@ -21,7 +20,7 @@
             border: 1px solid #fff;
         }
     }
-    #cancel-add-page-btn {
+    #cancel-delete-page-btn {
         background-color: $accent;
         color: #fff;
         &:hover, &:focus {

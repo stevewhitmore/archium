@@ -17,6 +17,7 @@ import { WikiViewComponent } from './wiki/wiki-view/wiki-view.component';
 import { WikiAddComponent } from './wiki/wiki-add/wiki-add.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { WikiEditComponent } from './wiki/wiki-edit/wiki-edit.component';
+import { WikiDeleteComponent } from './wiki/wiki-delete/wiki-delete.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WikiEditComponent } from './wiki/wiki-edit/wiki-edit.component';
     PlanComponent,
     WikiViewComponent,
     WikiAddComponent,
-    WikiEditComponent
+    WikiEditComponent,
+    WikiDeleteComponent
   ],
   imports: [
     BrowserModule,

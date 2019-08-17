@@ -59,14 +59,14 @@
     }
 }
 #toolbar-container.plan {
-    background-color: $redish;
+    background-color: $red;
     #left-half {
         a {
             &.router-link-active {
-                color: $redish;
+                color: $red;
             }
             &:hover, &:focus {
-                color: $redish;
+                color: $red;
             }
         }
     }

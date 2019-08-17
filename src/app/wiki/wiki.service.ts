@@ -47,5 +47,13 @@ export class WikiService {
     return <Observable<any>>this.http.post(Url.WIKI_CONTEXT, data, {headers: headers});
   }
 
+  deletePage(pagePath: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return <Observable<any>>this.http.delete(`${Url.WIKI_CONTEXT}/${pagePath}`, {headers: headers});
+  }
+
 
 }
