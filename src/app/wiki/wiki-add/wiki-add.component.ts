@@ -15,7 +15,6 @@ export class WikiAddComponent {
   }
 
   createWikiPage() {
-    this.inputPath.reset();
     this.pageCreatedEvent.emit(this.inputPath.value);
   }
 
