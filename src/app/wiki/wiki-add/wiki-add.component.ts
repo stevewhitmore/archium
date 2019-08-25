@@ -11,9 +11,6 @@ export class WikiAddComponent {
   @Output() pageCreatedEvent = new EventEmitter();
   inputPath = new FormControl('', [Validators.required]);
 
-  constructor() {
-  }
-
   createWikiPage() {
     this.pageCreatedEvent.emit(this.inputPath.value);
   }
