@@ -48,10 +48,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.authenticationService.login(username, password)
                               .pipe(take(1))
-                              .subscribe(() => {
-                                this.notificationService.notify('success', 'Login successful!');
+                              .subscribe(resp => {
+                                this.notificationService.notify('success', resp.value.message);
                                 this.authenticationService.userLoginEvent();
                                 this.toggleLoginModalOff();
+                                console.log(resp);
                               }, resp => {
                                 this.notificationService.notify('error', resp.error.message);
                               });
