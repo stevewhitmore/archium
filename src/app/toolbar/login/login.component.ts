@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit, OnDestroy {
                                 this.notificationService.notify('success', 'Login successful!');
                                 this.authenticationService.userLoginEvent();
                                 this.toggleLoginModalOff();
-                              }, error => {
-                                this.notificationService.notify('error', error.message);
+                              }, resp => {
+                                this.notificationService.notify('error', resp.error.message);
                               });
   }
 
