@@ -1,4 +1,4 @@
-<div id="toolbar-container" [ngClass]="{'wiki': location.pathname === 'wiki'}">
+<div *ngIf="isLoggedIn" [ngClass]="{'wiki': location.pathname === 'wiki'}" id="toolbar-container" >
     <div id="left-half">
         <a [routerLink]="['/home']"      
            #homeLink 
@@ -21,6 +21,6 @@
         </a>
     </div>
     <div id="right-half">
-        <app-login></app-login>
+        
     </div>
 </div>

@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { AuthenticationService } from '../../_shared/security/authentication.service';
-import { NotificationService } from '../../_shared/notification.service';
+import { AuthenticationService } from '../_shared/security/authentication.service';
+import { NotificationService } from '../_shared/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -55,15 +55,6 @@ export class LoginComponent implements OnInit, OnDestroy {
                               }, error => {
                                 this.notificationService.notify('error', error.message);
                               });
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickout(event) {
-    if(!this.eRef.nativeElement.contains(event.target)) {
-      this.toggleLoginModalOff();
-    } else {
-      this.toggleLoginModalOn();
-    }
   }
 
   logOut() {

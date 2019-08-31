@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 import { WikiComponent } from './wiki/wiki.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './toolbar/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './wiki/wiki-menu/wiki-menu.component';
 import { PlanComponent } from './plan/plan.component';

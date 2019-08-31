@@ -15,14 +15,17 @@ export class ToolbarComponent implements OnInit {
   loginEventSub: Subscription;
   currentRoute: string;
   toolbarContainerEl: any;
+  isLoggedIn: boolean = false;
 
   constructor(private router: Router,
-              private location: Location) {
+              private location: Location,
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
-
     this.setInitialToolbarStyling();
+
+    this.isLoggedIn = this.authenticationService.isLoggedIn();
   }
 
   setInitialToolbarStyling() {
