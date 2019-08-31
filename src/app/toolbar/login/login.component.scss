@@ -12,9 +12,9 @@
         padding: 0.5rem 1rem;
         margin: 1rem;
         align-self: center;
-        &:hover, &:focus {
-            border: 1px solid #fff;
-        }
+    }
+    &:hover button, &:focus button {
+        border: 1px solid #fff;
     }
 }
 
