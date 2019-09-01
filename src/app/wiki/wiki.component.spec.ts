@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Output, Input, DebugElement } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { WikiComponent } from './wiki.component';
-import { Component, Output, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../_shared/testing/stubs/router.stubs';
 import { NotificationService } from '../_shared/notification.service';
 import { WikiService } from './wiki.service';
@@ -57,6 +57,7 @@ export class FakeWikiDeleteComponent {
 fdescribe('WikiComponent', () => {
   let component: WikiComponent;
   let fixture: ComponentFixture<WikiComponent>;
+  let debugEl: DebugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -78,7 +79,9 @@ fdescribe('WikiComponent', () => {
 
     fixture = TestBed.createComponent(WikiComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    debugEl = fixture.debugElement;
+
+
   });
 
   it('should create', () => {
