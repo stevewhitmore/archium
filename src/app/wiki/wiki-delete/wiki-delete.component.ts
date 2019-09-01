@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WikiDeleteComponent implements OnInit {
   @Output() toggleDeleteModalEvent = new EventEmitter();
-  @Output() pageDeleteEvent = new EventEmitter();
+  @Output() deletePageEvent = new EventEmitter();
   doomedPath: string;
 
   constructor(private route: ActivatedRoute) {
@@ -19,11 +19,11 @@ export class WikiDeleteComponent implements OnInit {
   }
 
   confirmDeletion() {
-    this.pageDeleteEvent.emit(this.doomedPath);
+    this.deletePageEvent.emit(this.doomedPath);
   }
 
   toggleDeleteOff() {
-    this.toggleDeleteModalEvent.emit(null);
+    this.deletePageEvent.emit(null);
   }
 
 }

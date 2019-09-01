@@ -9,8 +9,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class WikiEditComponent implements OnChanges {
   @Input() pageContent: WikiModel;
-  @Output() toggleEditModeEvent = new EventEmitter();
-  @Output() saveEditsEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
   currentContent: WikiModel;
   wikiEditForm: FormGroup;
 
@@ -35,11 +34,11 @@ export class WikiEditComponent implements OnChanges {
   saveEdit() {
     const updatedPage = Object.assign({}, this.currentContent, this.wikiEditForm.value)
 
-    this.saveEditsEvent.emit(updatedPage);
+    this.editEvent.emit(updatedPage);
   }
 
   cancelEdit() {
-    this.toggleEditModeEvent.emit(null);
+    this.editEvent.emit(null);
   }
 
   pathMatchTitle() {

@@ -8,14 +8,14 @@ import { Validators, FormControl } from '@angular/forms';
 })
 export class WikiAddComponent {
   @Output() toggleCreateModalEvent = new EventEmitter();
-  @Output() pageCreatedEvent = new EventEmitter();
+  @Output() createPageEvent = new EventEmitter();
   inputPath = new FormControl('', [Validators.required]);
 
   createWikiPage() {
-    this.pageCreatedEvent.emit(this.inputPath.value);
+    this.createPageEvent.emit(this.inputPath.value);
   }
 
   toggleCreateModal() {
-    this.toggleCreateModalEvent.emit(null);
+    this.createPageEvent.emit(null);
   }
 }
