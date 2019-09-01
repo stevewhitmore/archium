@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/_shared/security/authentication.s
   templateUrl: './wiki-menu.component.html',
   styleUrls: ['./wiki-menu.component.scss']
 })
-export class MenuComponent implements OnInit, OnDestroy {
+export class WikiMenuComponent implements OnInit, OnDestroy {
   @Output() toggleEditEvent = new EventEmitter();
   @Output() toggleCreateModalEvent = new EventEmitter();
   @Output() toggleDeleteModalEvent = new EventEmitter();
@@ -81,7 +81,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   toggleEdit() {
-    this.toggleEditEvent.emit(null); 
+    this.toggleEditEvent.emit(null);
   }
 
   toggleCreateModal() {
