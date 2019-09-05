@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastaModule } from 'ngx-toasta';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,7 @@ import { LoginComponent } from './toolbar/login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PlanComponent } from './plan/plan.component';
 import { WikiModule } from './wiki/wiki.module';
+// import { AuthInterceptor } from './_shared/security/auth-interceptor';
 
 @NgModule({
   imports: [
@@ -29,7 +30,9 @@ import { WikiModule } from './wiki/wiki.module';
     ToolbarComponent,
     PlanComponent,
   ],
-  providers: [],
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

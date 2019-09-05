@@ -13,31 +13,27 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string): any {
-    const resp = {
-      apiKey: 'some-api-key',
-      value: {
-        message: 'success!'
-      }
-    }
-    localStorage.setItem('apiKey', resp.apiKey);
-    return of(resp);
-    // return this.http.post<any>(`http://localhost/services/login/api.php`, { username, password })
-    //             .pipe(map(resp => {
-    //                 if (resp && resp.apiKey) {
-    //                     localStorage.setItem('apiKey', resp.apiKey);
-    //                 }
+  login(username: string, password: string): any {    
+    return this.http.post<any>(`http://localhost/services/login/api.php`, { username, password })
+                .pipe(map(resp => {
+                    if (resp && resp.apiKey) {
+                        localStorage.setItem('apiKey', resp.apiKey);
+                    }
 
-    //                 return of(resp);
-    //             }));
+                    return of(resp);
+                }));
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('apiKey') !== null;
+    return this.getAuthToken() !== null;
   }
 
   userLoginEvent() {
     this.logInEventSource.next();
+  }
+
+  getAuthToken() {
+    return localStorage.getItem('apiKey');
   }
 
   logOut(): void {
