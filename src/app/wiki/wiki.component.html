@@ -11,4 +11,5 @@
 <app-wiki-add *ngIf="addFormOn"
               (createPageEvent)="addNewPage($event)"></app-wiki-add>
 <app-wiki-delete *ngIf="deleteConfirmOn && pageContent"
+                 [pageContent]="pageContent"
                  (deletePageEvent)="deletePage($event)"></app-wiki-delete>
