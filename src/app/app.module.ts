@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './toolbar/login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WikiModule } from './wiki/wiki.module';
-// import { AuthInterceptor } from './_shared/security/auth-interceptor';
 
 @NgModule({
   imports: [
@@ -27,9 +26,6 @@ import { WikiModule } from './wiki/wiki.module';
     HomeComponent,
     LoginComponent,
     ToolbarComponent,
-  ],
-  providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
