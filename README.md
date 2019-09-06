@@ -12,19 +12,7 @@ Inspired by Ben Vacha's [Specter](https://github.com/benvacha/specter).
 Due to having multiple jobs and a family to take up most of my time the projected deployment date of v1 is the end of the year. Between now and then I have the following major tasks to complete -
 
 ### Todos
-- ~~Upgrade to Angular v8+~~
-- ~~Finish delete service call~~
-- ~~Fix unit tests~~
-- ~~Get rid of 'confirm' dialog and use custom one~~
-- Catch up unit tests before adding more functionality
-- Fix proxy for local development
-- Update API endpoint URLs
-- Finish authentication functionality
-  - Http interceptors need to be put in place
-  - Encrypt user credentials before making login api call
-- Update to meet PWA standards
-- Add flashcard functionality
-- Add admin (plan) section functionality
+See project [issues](https://gitlab.com/steve.whitmore/archium/issues).
 
 
 ---
