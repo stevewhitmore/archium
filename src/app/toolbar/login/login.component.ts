@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit, OnDestroy {
                                 this.notificationService.notify('success', resp.value.message);
                                 this.authenticationService.userLoginEvent();
                                 this.toggleLoginModalOff();
-                                console.log(resp);
                               }, resp => {
                                 this.notificationService.notify('error', resp.error.message);
                               });
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   clickout(event) {
     if(!this.eRef.nativeElement.contains(event.target)) {
       this.toggleLoginModalOff();
-    } else {
+    } else if(!this.userIsLoggedIn) {
       this.toggleLoginModalOn();
     }
   }

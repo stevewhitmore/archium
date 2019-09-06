@@ -9,6 +9,7 @@ import { of, Subject } from 'rxjs';
 export class AuthenticationService {
   logInEventSource = new Subject<any>();
   logInEvent$ = this.logInEventSource.asObservable();
+  loggedIn = false
 
   constructor(private http: HttpClient) {
   }
@@ -18,6 +19,7 @@ export class AuthenticationService {
                 .pipe(map(resp => {
                     if (resp && resp.apiKey) {
                         localStorage.setItem('apiKey', resp.apiKey);
+                        this.loggedIn = true;
                     }
 
                     return of(resp);
@@ -25,11 +27,12 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    return this.getAuthToken() !== null;
+    return this.loggedIn;
   }
 
   userLoginEvent() {
     this.logInEventSource.next();
+
   }
 
   getAuthToken() {
@@ -38,7 +41,7 @@ export class AuthenticationService {
 
   logOut(): void {
       localStorage.removeItem('apiKey');
-      localStorage.removeItem('username');
+      this.loggedIn = false;
       this.logInEventSource.next();
   }
 }
