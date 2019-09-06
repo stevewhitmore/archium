@@ -1,24 +1,24 @@
 <?php
 class Wiki {
- 
+
     private $conn;
     private $table_name = "wiki";
- 
+
     public $id;
     public $title;
     public $content;
     public $path;
- 
+
     function __construct($db){
         $this->conn = $db;
     }
- 
+
     function getPageByPath() {
-        $query = "SELECT * 
-                FROM wiki 
-                WHERE path = :path 
+        $query = "SELECT *
+                FROM wiki
+                WHERE path = :path
                 LIMIT 0,1";
-     
+
         $prepareQuery = $this->conn->prepare($query);
 
         $path = htmlspecialchars(strip_tags($this->path));
@@ -26,9 +26,9 @@ class Wiki {
         $prepareQuery->bindValue(":path", $path, PDO::PARAM_STR);
 
         $prepareQuery->execute();
-     
+
         $num = $prepareQuery->rowCount();
-        
+
         if ($num > 0) {
             $row = $prepareQuery->fetch(PDO::FETCH_ASSOC);
             $this->conn = null;        // Disconnect
@@ -42,30 +42,32 @@ class Wiki {
                 )
             );
         }
-        
+
         $this->conn = null;
         return null;
     }
 
     function getAllPagePaths() {
-        $query = "SELECT title, path, marked_for_deletion
-                  FROM " . $this->table_name;
-     
+        // $query = "SELECT title, path, marked_for_deletion
+        //           FROM " . $this->table_name;
+        $query = "SELECT title, path
+        FROM " . $this->table_name;
+
         $prepareQuery = $this->conn->prepare($query);
         $prepareQuery->execute();
 
         $result = $prepareQuery->fetchAll(PDO::FETCH_ASSOC);
-        $result = array_diff($result, ["1"]);
+        // $result = array_diff($result, ["1"]);
         $this->conn = null;
-        
+
         return json_encode($result);
     }
 
     function updatePage($data) {
-        $query = "UPDATE wiki   
+        $query = "UPDATE wiki
                   SET title = :title,
                       content = :content,
-                      path = :path 
+                      path = :path
                   WHERE id = :id";
 
         $prepareQuery = $this->conn->prepare($query);
@@ -112,7 +114,7 @@ class Wiki {
     }
 
     function markForDeletion($data) {
-        $query = "UPDATE wiki   
+        $query = "UPDATE wiki
                   SET marked_for_deletion = '1',
                       deletion_req_date = current_timestamp
                   WHERE id = :id";
@@ -125,6 +127,6 @@ class Wiki {
 
         $this->conn = null;
     }
- 
+
 }
 ?>
