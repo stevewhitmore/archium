@@ -1,8 +1,7 @@
 {
-    "/services/*": {
-        "target": "http://localhost/services",
+    "/api/*": {
+        "target": "http://localhost/api",
         "secure": false,
         "changeOrigin": true
     }
 }
-    
