@@ -5,13 +5,15 @@ import { WikiModel } from '../_shared/models';
 // import { Url } from '@enums';
 import {Url} from '../_shared/enums';
 import { catchError } from 'rxjs/operators';
+import { AuthenticationService } from '../_shared/security/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WikiService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private authenticationService: AuthenticationService) {
   }
 
   getAllPageLinks() {
@@ -24,7 +26,8 @@ export class WikiService {
 
   savePageChanges(page): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': this.authenticationService.getAuthToken()
     });
     const data = JSON.stringify(page);
 
@@ -40,7 +43,8 @@ export class WikiService {
       title: pageTitle
     }
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': this.authenticationService.getAuthToken()
     });
     const data = JSON.stringify(createdWiki);
 
@@ -53,7 +57,8 @@ export class WikiService {
       delete: true
     }
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': this.authenticationService.getAuthToken()
     });
     const data = JSON.stringify(doomedWiki);
 

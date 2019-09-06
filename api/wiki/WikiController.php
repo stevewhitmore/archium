@@ -15,21 +15,21 @@ class WikiController {
     }
 
     function processRequest() {
-        $this->authTokenCheck();
-        // switch($this->requestMethod) {
-        //     case 'GET': 
-        //         $this->handleGetRequest();
-        //         break;
-        //     case 'PUT':
-        //         $this->updatePage();
-        //         break;
-        //     case 'POST':
-        //         $this->createPage();
-        //         break;
-        //     default:
-        //         echo json_encode(array("message" => "Request not recognized"));
-        //         return header("HTTP/1.1 400 BAD REQUEST");
-        // }
+        switch($this->requestMethod) {
+            case 'GET': 
+                $this->handleGetRequest();
+                break;
+            case 'PUT':
+                $this->authTokenCheck();
+                // $this->updatePage();
+                break;
+            case 'POST':
+                $this->createPage();
+                break;
+            default:
+                echo json_encode(array("message" => "Request not recognized"));
+                return header("HTTP/1.1 400 BAD REQUEST");
+        }
     }
     
     function handleGetRequest() {
@@ -91,18 +91,12 @@ class WikiController {
 
     private function authTokenCheck() {
         session_start();
-
-        // echo $_SESSION["key"];
-
-        $token = null;
         $headers = apache_request_headers();
+        
         if (isset($headers['Authorization'])) {
-            // $matches = array();
-            // preg_match('/Token token="(.*)"/', $headers['Authorization'], $matches);
-            // if(isset($matches[1])) {
-            //     $token = $matches[1];
-            // }
-            echo $headers['Authorization'];
+            if ($headers['Authorization'] != $_SESSION["key"]) {
+                return header("HTTP/1.1 403 FORBIDDEN");
+            }
         }
     }
 
