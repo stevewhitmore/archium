@@ -36,7 +36,7 @@ Due to having multiple jobs and a family to take up most of my time the projecte
 
 and it'll run on localhost:4200
 
-You'll also need PHP v7+ with all the contents of the ["services" subgroup](https://gitlab.com/archium-steve-whitmore/services).
+You'll also need PHP v7+ with all the contents of the "api" folder.
 
 You may encounter CORS issues. To circumvent them run the following command (assuming you have Chrome or Chromium installed):
 ```chromium-browser --disable-web-security --user-data-dir="[some directory here]"```
