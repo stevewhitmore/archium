@@ -9,10 +9,7 @@ Inspired by Ben Vacha's [Specter](https://github.com/benvacha/specter).
 
 ---
 ## This is a work in progress
-Due to having multiple jobs and a family to take up most of my time the projected deployment date of v1 is the end of the year. Between now and then I have the following major tasks to complete -
-
-### Todos
-See project [issues](https://gitlab.com/steve.whitmore/archium/issues).
+Due to having multiple jobs and a family to take up most of my time the projected deployment date of v1 is the end of the year. Between now and then I have a series of tasks to complete which are being tracked over in the [project issues](https://gitlab.com/steve.whitmore/archium/issues) section.
 
 
 ---
