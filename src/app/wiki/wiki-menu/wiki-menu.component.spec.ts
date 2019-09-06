@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuComponent } from './wiki-menu.component';
+import { WikiMenuComponent } from './wiki-menu.component';
 
-describe('MenuComponent', () => {
-  let component: MenuComponent;
-  let fixture: ComponentFixture<MenuComponent>;
+describe('WikiMenuComponent', () => {
+  let component: WikiMenuComponent;
+  let fixture: ComponentFixture<WikiMenuComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuComponent ]
+      declarations: [ WikiMenuComponent ]
     })
 
-    fixture = TestBed.createComponent(MenuComponent);
+    fixture = TestBed.createComponent(WikiMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

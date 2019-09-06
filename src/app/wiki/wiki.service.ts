@@ -47,12 +47,17 @@ export class WikiService {
     return <Observable<any>>this.http.post(Url.WIKI_CONTEXT, data, {headers: headers});
   }
 
-  deletePage(pagePath: string): Observable<any> {
+  deletePage(page): Observable<any> {
+    const doomedWiki = {
+      pageId: page.pageId,
+      delete: true
+    }
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
+    const data = JSON.stringify(doomedWiki);
 
-    return <Observable<any>>this.http.delete(`${Url.WIKI_CONTEXT}/${pagePath}`, {headers: headers});
+    return <Observable<any>>this.http.put(Url.WIKI_CONTEXT, data, {headers: headers});
   }
 
 

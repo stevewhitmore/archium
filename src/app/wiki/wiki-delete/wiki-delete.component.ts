@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,24 +6,23 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './wiki-delete.component.html',
   styleUrls: ['./wiki-delete.component.scss']
 })
-export class WikiDeleteComponent implements OnInit {
-  @Output() toggleDeleteModalEvent = new EventEmitter();
-  @Output() pageDeleteEvent = new EventEmitter();
+export class WikiDeleteComponent {
+  @Input() pageContent: any;
+  @Output() deletePageEvent = new EventEmitter();
   doomedPath: string;
 
-  constructor(private route: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    this.doomedPath = this.route.snapshot.params['page'];
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.pageContent.currentValue !== changes.pageContent.previousValue) {
+      this.pageContent = changes.pageContent.currentValue;
+    }
   }
 
   confirmDeletion() {
-    this.pageDeleteEvent.emit(this.doomedPath);
+    this.deletePageEvent.emit(this.pageContent);
   }
 
   toggleDeleteOff() {
-    this.toggleDeleteModalEvent.emit(null);
+    this.deletePageEvent.emit(null);
   }
 
 }

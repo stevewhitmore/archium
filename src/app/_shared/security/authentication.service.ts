@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { of, Subject } from 'rxjs';
 
-@Injectable({ 
-  providedIn: 'root' 
+@Injectable({
+  providedIn: 'root'
 })
 export class AuthenticationService {
   logInEventSource = new Subject<any>();
@@ -13,7 +13,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string): any {
+  login(username: string, password: string): any {    
     return this.http.post<any>(`http://localhost/services/login/api.php`, { username, password })
                 .pipe(map(resp => {
                     if (resp && resp.apiKey) {
@@ -25,11 +25,15 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('apiKey') !== null;
+    return this.getAuthToken() !== null;
   }
 
   userLoginEvent() {
     this.logInEventSource.next();
+  }
+
+  getAuthToken() {
+    return localStorage.getItem('apiKey');
   }
 
   logOut(): void {
