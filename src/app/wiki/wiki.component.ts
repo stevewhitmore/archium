@@ -64,9 +64,10 @@ export class WikiComponent implements OnInit, OnDestroy {
     }
   }
 
-  addNewPage(path) {
-    if (path) {
-      this.wikiService.createPage(path)
+  addNewPage(title) {
+    if (title) {
+      const path = title.replace(/ /g, '-').toLowerCase();
+      this.wikiService.createPage(title)
       .subscribe(() => {
         this.notificationService.notify('success', 'New page created!');
         this.toggleAddForm();
