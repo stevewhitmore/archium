@@ -39,10 +39,19 @@
                     outline: none;
                 }
             }
+            &.disabled {
+                cursor: not-allowed;
+                color: #666;
+                &:hover, &:focus {
+                    background-color: transparent;
+                    color: #666;
+                    outline: none;
+                }
+            }
         }
     }
     #right-half {
-        display: flex;        
+        display: flex;
     }
 }
 #toolbar-container.wiki {
