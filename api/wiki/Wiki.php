@@ -9,7 +9,7 @@ class Wiki {
     public $content;
     public $path;
 
-    function __construct($db){
+    function __construct($db) {
         $this->conn = $db;
     }
 

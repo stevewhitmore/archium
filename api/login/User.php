@@ -10,7 +10,7 @@ class User {
     public $password;
     public $apiKey;
  
-    public function __construct($db){
+    public function __construct($db) {
         $this->conn = $db;
     }
  
