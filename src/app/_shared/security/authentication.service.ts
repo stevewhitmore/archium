@@ -13,8 +13,8 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string): any {    
-    return this.http.post<any>(`http://localhost/services/login/api.php`, { username, password })
+  login(username: string, password: string): any {
+    return this.http.post<any>(`http://localhost/api/login/index.php`, { username, password })
                 .pipe(map(resp => {
                     if (resp && resp.apiKey) {
                         localStorage.setItem('apiKey', resp.apiKey);
