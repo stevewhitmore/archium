@@ -86,7 +86,7 @@ export class WikiComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.notificationService.notify('success', 'Page deleted!');
         this.toggleDeleteConfirm();
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/wiki');
       }, () => {
         this.notificationService.notify('error', 'Unable to delete page');
       });

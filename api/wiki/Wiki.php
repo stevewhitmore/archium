@@ -48,10 +48,8 @@ class Wiki {
     }
 
     function getAllPagePaths() {
-        // $query = "SELECT title, path, marked_for_deletion
-        //           FROM " . $this->table_name;
-        $query = "SELECT title, path
-        FROM " . $this->table_name;
+        $query = "SELECT title, path, marked_for_deletion
+                  FROM " . $this->table_name;
 
         $prepareQuery = $this->conn->prepare($query);
         $prepareQuery->execute();
