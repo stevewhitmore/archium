@@ -21,9 +21,10 @@ class WikiController {
                 break;
             case 'PUT':
                 $this->authTokenCheck();
-                // $this->updatePage();
+                $this->updatePage();
                 break;
             case 'POST':
+                $this->authTokenCheck();
                 $this->createPage();
                 break;
             default:
@@ -92,7 +93,7 @@ class WikiController {
     private function authTokenCheck() {
         session_start();
         $headers = apache_request_headers();
-        
+
         if (isset($headers['Authorization'])) {
             if ($headers['Authorization'] != $_SESSION["key"]) {
                 return header("HTTP/1.1 403 FORBIDDEN");
