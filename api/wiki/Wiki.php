@@ -9,7 +9,7 @@ class Wiki {
     public $content;
     public $path;
 
-    function __construct($db){
+    function __construct($db) {
         $this->conn = $db;
     }
 
@@ -55,7 +55,6 @@ class Wiki {
         $prepareQuery->execute();
 
         $result = $prepareQuery->fetchAll(PDO::FETCH_ASSOC);
-        // $result = array_diff($result, ["1"]);
         $this->conn = null;
 
         return json_encode($result);

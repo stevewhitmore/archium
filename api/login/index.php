@@ -20,18 +20,20 @@ function generateAPIkey() {
     return implode('-', str_split(substr(strtolower(md5(microtime().rand(1000, 9999))), 0, 30), 6));
 }
 
+session_start();
+
 if ($username_exists && ($data->password === $user->password)) {
 
     http_response_code(200);
 
     $key = generateAPIkey();
-    $user->apiKey = $key;
+    $_SESSION["key"] = $key;
 
     echo json_encode(
         array(
             "message" => "Successful login.",
             "username" => $user->username,
-            "apiKey" => $user->apiKey
+            "apiKey" => $key
         )
     );
 

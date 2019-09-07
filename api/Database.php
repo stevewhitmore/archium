@@ -8,7 +8,7 @@ class Database {
     private $password;
     public $conn;
  
-    public function __construct(){
+    public function __construct() {
         $ini = parse_ini_file("config.ini");
         $env = $this->getEnvironment($ini);
         $this->host = $ini['db_local_host'];
@@ -26,7 +26,7 @@ class Database {
     }
 
     // get the database connection
-    public function getConnection(){
+    public function getConnection() {
  
         $this->conn = null;
  
