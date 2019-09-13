@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ToastaModule } from 'ngx-toasta';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,13 +19,13 @@ import { WikiModule } from './wiki/wiki.module';
     HttpClientModule,
     ReactiveFormsModule,
     WikiModule,
-    ToastaModule.forRoot(),
+    ToastaModule.forRoot()
   ],
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ToolbarComponent,
+    ToolbarComponent
   ],
   bootstrap: [AppComponent]
 })
