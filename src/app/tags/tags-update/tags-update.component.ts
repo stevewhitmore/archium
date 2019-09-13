@@ -13,6 +13,7 @@ export class TagsUpdateComponent {
   tagsList: FormControl = new FormControl();
 
   updateTags() {
+    console.log('tagsList: ', this.tagsList);
     this.updateTagsEvent.emit(this.tagsList.value);
   }
 

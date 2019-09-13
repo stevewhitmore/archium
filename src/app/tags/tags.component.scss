@@ -1,5 +1,9 @@
 @import "../app.component.scss";
 
+app-tags-view {
+    cursor: pointer;
+}
+
 div {
     display: inline-block;
     max-width: 200px;
@@ -7,7 +11,12 @@ div {
     border: 1px solid #f1f1f1;
 }
 
-button {
+h4 {
+    margin: 5px 0 5px 5px;
+    color: #6c88a5;
+}
+
+button, span {
     @include buttonBasics();
     background-color: #eee;
     border: 1px solid #cecece;

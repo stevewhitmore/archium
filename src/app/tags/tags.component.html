@@ -1,7 +1,7 @@
 <div>
     <app-tags-view *ngIf="!updateMode"
-                   [pageTags]="pageTags"
-                   (updateTagsEvent)="toggleUpdateTags()"></app-tags-view>
+                   (click)="toggleUpdateTags()"
+                   [pageTags]="pageTags"></app-tags-view>
 
     <app-tags-update *ngIf="updateMode"
                      [pageTags]="pageTags"

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastaModule } from 'ngx-toasta';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { TagsModule } from './tags/tags.module';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     WikiModule,
     TagsModule,
     ToastaModule.forRoot()

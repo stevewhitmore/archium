@@ -1,11 +1,14 @@
 <div>
-    <label for="tag-choices">Choose new tag:</label>
-    <input list="existing-tags" id="tag-choices" formControlName="tagsList">
 
-    <!-- scrap this for angular material auto-complete - https://material.angular.io/components/autocomplete/overview -->
-    <datalist id="existing-tags">
-        <option *ngFor="let tag of allTags" value="{{tag.tag_desc}}">
-    </datalist>
+    <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Tags" aria-label="Tags" matInput formControlName="tagsList" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let tag of allTags" [value]="tag.tag_desc">
+            {{tag.tag_desc}}
+        </mat-option>
+    </mat-autocomplete>
+    </mat-form-field>
+
     <button type="button"
             id="update-tags"
             (click)="updateTags()">add</button>

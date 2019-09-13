@@ -7,10 +7,4 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 })
 export class TagsViewComponent {
   @Input() pageTags: any[];
-  @Output() updateTagsEvent: EventEmitter<any> = new EventEmitter();
-
-  updateTags() {
-    this.updateTagsEvent.emit(null);
-  }
-
 }
