@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { WikiService } from './wiki.service';
 
-describe('WikiService', () => {
+fdescribe('WikiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
