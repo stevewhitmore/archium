@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './toolbar/login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WikiModule } from './wiki/wiki.module';
+import { TagsModule } from './tags/tags.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { WikiModule } from './wiki/wiki.module';
     HttpClientModule,
     ReactiveFormsModule,
     WikiModule,
+    TagsModule,
     ToastaModule.forRoot()
   ],
   declarations: [

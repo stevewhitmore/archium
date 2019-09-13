@@ -27,5 +27,18 @@ class Tag {
 
         return json_encode($result);
     }
+
+    function getAllTags() {
+        $query = "SELECT DISTINCT tag_id, tag_desc
+                  FROM tag;";
+
+        $prepareQuery = $this->conn->prepare($query);
+        $prepareQuery->execute();
+
+        $result = $prepareQuery->fetchAll(PDO::FETCH_ASSOC);
+        $this->conn = null;
+
+        return json_encode($result);
+    }
 }
 ?>

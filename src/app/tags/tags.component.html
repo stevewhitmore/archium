@@ -1,3 +1,10 @@
 <div>
-    <button *ngFor="let tag of pageTags">{{tag.tag_desc}}</button>
+    <app-tags-view *ngIf="!updateMode"
+                   [pageTags]="pageTags"
+                   (updateTagsEvent)="toggleUpdateTags()"></app-tags-view>
+
+    <app-tags-update *ngIf="updateMode"
+                     [pageTags]="pageTags"
+                     [allTags]="allTags"
+                     (updateTagsEvent)="handleUpdateTagsEvent($event)"></app-tags-update>
 </div>

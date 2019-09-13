@@ -16,4 +16,8 @@ export class TagsService {
     return this.http.get(`${Url.TAGS_CONTEXT}index.php?path=${path}`);
   }
 
+  getAllTags(): Observable<any> {
+    return this.http.get(`${Url.TAGS_CONTEXT}index.php?path=all`);
+  }
+
 }

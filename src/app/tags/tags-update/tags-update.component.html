@@ -1,0 +1,18 @@
+<div>
+    <label for="tag-choices">Choose new tag:</label>
+    <input list="existing-tags" id="tag-choices" formControlName="tagsList">
+
+    <!-- scrap this for angular material auto-complete - https://material.angular.io/components/autocomplete/overview -->
+    <datalist id="existing-tags">
+        <option *ngFor="let tag of allTags" value="{{tag.tag_desc}}">
+    </datalist>
+    <button type="button"
+            id="update-tags"
+            (click)="updateTags()">add</button>
+    <button type="button"
+            id="cancel-update-tags"
+            (click)="cancelUpdate()">cancel</button>
+</div>
+<button *ngFor="let tag of pageTags">
+    {{tag.tag_desc}} x
+</button>

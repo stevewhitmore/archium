@@ -6,12 +6,12 @@ class TagController {
 
     private $db;
     private $requestMethod;
-    private $page;
+    private $tag;
 
     function __construct($db, $requestMethod) {
         $this->db = $db;
         $this->requestMethod = $requestMethod;
-        $this->page = new Tag($db);
+        $this->tag = new Tag($db);
     }
 
     function processRequest() {
@@ -32,10 +32,10 @@ class TagController {
         }
 
         if ($_GET['path'] === 'all') {
-            // nothin yet
+            echo $this->tag->getAllTags();
         } else {
-            $this->page->path = $_GET['path'];
-            $result = $this->page->getTagsForPage();
+            $this->tag->path = $_GET['path'];
+            $result = $this->tag->getTagsForPage();
 
             if ($result) {
                 echo $result;
