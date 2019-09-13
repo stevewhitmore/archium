@@ -5,7 +5,6 @@ class Tag {
     private $table_name = "tag";
 
     public $id;
-    public $page_id;
     public $path;
 
     function __construct($db) {

@@ -1,7 +1,7 @@
 <?php
 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: GET, POST, PUT");
+header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Origin: *");
 
 require_once('../Database.php');
