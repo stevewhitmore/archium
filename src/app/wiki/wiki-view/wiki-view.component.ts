@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WikiModel } from 'src/app/_shared/models';
 
 @Component({
@@ -6,16 +6,6 @@ import { WikiModel } from 'src/app/_shared/models';
   templateUrl: './wiki-view.component.html',
   styleUrls: ['./wiki-view.component.scss']
 })
-export class WikiViewComponent implements OnChanges {
+export class WikiViewComponent {
   @Input() pageContent: WikiModel;
-  currentContent: WikiModel;
-
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pageContent.currentValue !== changes.pageContent.previousValue) {
-      this.currentContent = changes.pageContent.currentValue;
-    }
-  }
-
 }

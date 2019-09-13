@@ -15,6 +15,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   path: string = 'default';
   pageContent: any;
+  pageTags: any;
   editFormOn = false;
   addFormOn = false;
   deleteConfirmOn = false;
