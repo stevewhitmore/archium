@@ -1,0 +1,18 @@
+@import "../app.component.scss";
+
+div {
+    display: inline-block;
+    max-width: 200px;
+    height: auto;
+    border: 1px solid #f1f1f1;
+
+    button {
+        @include buttonBasics();
+        background-color: #eee;
+        border: 1px solid #cecece;
+        color: $blue;
+        padding: 5px;
+        margin: 5px;
+        font-size: 0.85rem;
+    }
+}
