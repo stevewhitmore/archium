@@ -19,6 +19,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   editFormOn = false;
   addFormOn = false;
   deleteConfirmOn = false;
+  isHome = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -32,10 +33,12 @@ export class WikiComponent implements OnInit, OnDestroy {
         this.path = params['page'];
         if (this.path) {
           this.getPageContent(this.path);
+          this.isHome = false;
         }
       }
     });
 
+    console.log(this.isHome);
   }
 
   getPageContent(path) {
