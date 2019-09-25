@@ -13,12 +13,14 @@ import { WikiEditComponent } from './wiki-edit/wiki-edit.component';
 import { WikiService } from './wiki.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TagsModule } from '../tags/tags.module';
 
 @NgModule({
     imports: [
         CommonModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        TagsModule,
         MarkdownModule.forRoot()
     ],
     declarations: [

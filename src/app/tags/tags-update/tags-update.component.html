@@ -1,0 +1,21 @@
+<div>
+
+    <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Tags" aria-label="Tags" matInput formControlName="tagsList" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let tag of allTags" [value]="tag.tag_desc">
+            {{tag.tag_desc}}
+        </mat-option>
+    </mat-autocomplete>
+    </mat-form-field>
+
+    <button type="button"
+            id="update-tags"
+            (click)="updateTags()">add</button>
+    <button type="button"
+            id="cancel-update-tags"
+            (click)="cancelUpdate()">cancel</button>
+</div>
+<button *ngFor="let tag of pageTags">
+    {{tag.tag_desc}} x
+</button>

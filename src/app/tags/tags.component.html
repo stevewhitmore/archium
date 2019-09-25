@@ -1,0 +1,10 @@
+<div>
+    <app-tags-view *ngIf="!updateMode"
+                   (click)="toggleUpdateTags()"
+                   [pageTags]="pageTags"></app-tags-view>
+
+    <app-tags-update *ngIf="updateMode"
+                     [pageTags]="pageTags"
+                     [allTags]="allTags"
+                     (updateTagsEvent)="handleUpdateTagsEvent($event)"></app-tags-update>
+</div>

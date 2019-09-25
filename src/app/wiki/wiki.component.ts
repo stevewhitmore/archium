@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WikiModel } from '../_shared/models';
 import { WikiService } from './wiki.service';
 import { take } from 'rxjs/operators';
-import { Observable, Subscription, VirtualTimeScheduler } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NotificationService } from '../_shared/notification.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   path: string = 'default';
   pageContent: any;
+  pageTags: any;
   editFormOn = false;
   addFormOn = false;
   deleteConfirmOn = false;

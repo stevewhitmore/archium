@@ -1,2 +1,3 @@
-<h1>{{currentContent.title}}</h1>
-<div markdown [data]="currentContent.content"></div>
+<h1>{{pageContent.title}}</h1>
+<div markdown [data]="pageContent.content"></div>
+<app-tags [path]="pageContent.path"></app-tags>

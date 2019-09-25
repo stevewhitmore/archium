@@ -1,0 +1,27 @@
+@import "../app.component.scss";
+
+app-tags-view {
+    cursor: pointer;
+}
+
+div {
+    display: inline-block;
+    max-width: 200px;
+    height: auto;
+    border: 1px solid #f1f1f1;
+}
+
+h4 {
+    margin: 5px 0 5px 5px;
+    color: #6c88a5;
+}
+
+button, span {
+    @include buttonBasics();
+    background-color: #eee;
+    border: 1px solid #cecece;
+    color: $blue;
+    padding: 5px;
+    margin: 5px;
+    font-size: 0.85rem;
+}

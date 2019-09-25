@@ -39,6 +39,8 @@ class Wiki {
                     "title" => $row['title'],
                     "content" => $row['content'],
                     "path" => $row['path'],
+                    "date_last_modified" => $row['date_last_modified'],
+                    "date_created" => $row['date_created']
                 )
             );
         }
@@ -64,7 +66,8 @@ class Wiki {
         $query = "UPDATE wiki
                   SET title = :title,
                       content = :content,
-                      path = :path
+                      path = :path,
+                      date_last_modified = current_timestamp
                   WHERE id = :id";
 
         $prepareQuery = $this->conn->prepare($query);
