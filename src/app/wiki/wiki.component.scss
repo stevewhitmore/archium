@@ -1,4 +1,12 @@
-.container {
-    margin-left: 100px;
-    padding: 25px;
+h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+#wiki-wrap {
+    display: flex;
+    .wiki-wrap-inner {
+        flex: 1;
+        padding: 50px;
+    }
 }

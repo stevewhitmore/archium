@@ -8,7 +8,7 @@ import { ToastaModule } from 'ngx-toasta';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './toolbar/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WikiModule } from './wiki/wiki.module';
 import { TagsModule } from './tags/tags.module';

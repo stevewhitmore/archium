@@ -37,8 +37,6 @@ export class WikiComponent implements OnInit, OnDestroy {
         }
       }
     });
-
-    console.log(this.isHome);
   }
 
   getPageContent(path) {
