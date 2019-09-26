@@ -1,6 +1,8 @@
 import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { TagsService } from './tags.service';
+import { AuthenticationService } from '../_shared/security/authentication.service';
+import { NotificationService } from '../_shared/notification.service';
 
 @Component({
   selector: 'app-tags',
@@ -13,7 +15,9 @@ export class TagsComponent implements OnChanges {
   allTags: any[];
   updateMode: boolean = false;
 
-  constructor(private tagsService: TagsService) {
+  constructor(private tagsService: TagsService,
+              private authenticationService: AuthenticationService,
+              private notificationService: NotificationService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -41,11 +45,27 @@ export class TagsComponent implements OnChanges {
   }
 
   handleUpdateTagsEvent(updatedTags) {
-    console.log('updatedTags: ', updatedTags);
+    if (updatedTags) {
+      this.pageTags = updatedTags;
+
+      const tagData = {
+        path: this.path,
+        tags: this.pageTags
+      }
+
+      this.tagsService.updateTags(tagData)
+        .pipe(take(1))
+        .subscribe(resp => {
+          this.notificationService.notify('success', resp.message)
+        });
+    }
     this.toggleUpdateTags();
   }
 
   toggleUpdateTags() {
+    if (!this.authenticationService.isLoggedIn()) {
+      return;
+    }
     this.updateMode = !this.updateMode;
   }
 }

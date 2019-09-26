@@ -18,18 +18,12 @@ form {
     }
     #save-cancel {
         margin-top: 10px;
-        button {
-            @include buttonBasics();
-            font-size: 1.25rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid transparent;
-            &:hover {
-                border: 1px solid $accent;
-            }
-            &#save {
-                background-color: $green;
-                color: #fff;
-            }
+        button#saveEdit {
+            @include buttonSave();
+            margin-left: 0;
+        }
+        button#cancelEdit {
+            @include buttonCancel();
         }
     }
 

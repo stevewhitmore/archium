@@ -14,6 +14,7 @@ import { WikiService } from './wiki.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagsModule } from '../tags/tags.module';
+import { LoginComponent } from '../login/login.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { TagsModule } from '../tags/tags.module';
         WikiViewComponent,
         WikiAddComponent,
         WikiEditComponent,
-        WikiDeleteComponent
+        WikiDeleteComponent,
+        LoginComponent
     ],
     entryComponents: [
         WikiComponent

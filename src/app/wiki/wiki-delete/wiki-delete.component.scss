@@ -8,24 +8,10 @@
         text-align: center;
     }
     button {
-        @include buttonBasics();
+        @include buttonSaveDark();
         background-color: $red;
-        color: #fff;
-        border: 1px solid $accent;
-        font-size: 1.25rem;
-        padding: 0.5rem 1rem;
-        margin: 1rem;
-        align-self: center;
-        width: 100px;
-        &:hover, &:focus {
-            border: 1px solid #fff;
-        }
     }
     #cancel-delete-page-btn {
-        background-color: $accent;
-        color: #fff;
-        &:hover, &:focus {
-            border: 1px solid #fff;
-        }
+        @include buttonCancelDark();
     }
 }

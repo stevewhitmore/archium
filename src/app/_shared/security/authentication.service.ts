@@ -26,7 +26,6 @@ export class AuthenticationService {
                 }));
   }
 
-  // Temporarily changed to always true to avoid having to log in constantly during initial dev
   isLoggedIn(): boolean {
     // return this.loggedIn;
     return true;

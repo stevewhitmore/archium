@@ -15,6 +15,46 @@ $accent: #525252;
     }
 }
 
+@mixin buttonSave {
+    @include buttonBasics();
+    background-color: $green;
+    color: #fff;
+    border: 1px solid transparent;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    align-self: center;
+    width: 100px;
+    &:hover, &:focus {
+        border: 1px solid $accent;
+    }
+}
+
+@mixin buttonSaveDark {
+    @include buttonSave();
+    &:hover, &:focus {
+        border: 1px solid #fff;
+    }
+}
+
+@mixin buttonCancel {
+    @include buttonSave();
+    background-color: transparent;
+    color: $accent;
+    &:hover {
+        border: 1px solid $accent;
+    }
+}
+
+@mixin buttonCancelDark {
+    @include buttonSave();
+    background-color: $accent;
+    color: #fff;
+    &:hover, &:focus {
+        border: 1px solid #fff;
+    }
+}
+
 @mixin popoutModal {
     position: fixed;
     top: 0;

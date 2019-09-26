@@ -14,19 +14,19 @@
     <textarea id="content"
               aria-label="content"
               formControlName="content"></textarea>
-        
+
 
     <div id="save-cancel">
-        <button id="cancel"
-                title="Cancel changes" 
-                (click)="cancelEdit()">
-        <i class="fa fa-times" aria-hidden="true"></i>
-        <span>Cancel</span>
-        </button>
-        <button id="save"
+        <button id="saveEdit"
                 title="Save wiki entry"
                 (click)="saveEdit()">
-        <span>Save</span>
+            <span>Save</span>
+        </button>
+        <button id="cancelEdit"
+                title="Cancel changes"
+                (click)="cancelEdit()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <span>Cancel</span>
         </button>
     </div>
 </form>

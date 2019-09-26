@@ -4,7 +4,7 @@ app-tags-view {
     cursor: pointer;
 }
 
-div {
+#tags-wrap {
     display: inline-block;
     max-width: 200px;
     height: auto;
@@ -16,12 +16,15 @@ h4 {
     color: #6c88a5;
 }
 
-button, span {
+button {
     @include buttonBasics();
-    background-color: #eee;
-    border: 1px solid #cecece;
-    color: $blue;
-    padding: 5px;
-    margin: 5px;
-    font-size: 0.85rem;
+    &.tags {
+        display: inline-block;
+        background-color: #eee;
+        border: 1px solid #cecece;
+        color: $blue;
+        padding: 5px;
+        margin: 5px;
+        font-size: 0.85rem;
+    }
 }
