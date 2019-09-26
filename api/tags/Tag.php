@@ -25,7 +25,7 @@ class Tag {
         $result = $prepareQuery->fetchAll(PDO::FETCH_ASSOC);
         $this->conn = null;
 
-        return json_encode($result);
+        return json_encode($result, JSON_NUMERIC_CHECK);
     }
 
     function getAllTags() {
@@ -38,7 +38,7 @@ class Tag {
         $result = $prepareQuery->fetchAll(PDO::FETCH_ASSOC);
         $this->conn = null;
 
-        return json_encode($result);
+        return json_encode($result, JSON_NUMERIC_CHECK);
     }
 }
 ?>
