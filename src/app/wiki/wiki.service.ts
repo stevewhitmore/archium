@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { WikiModel } from '../_shared/models';
 // import { Url } from '@enums';
 import {Url} from '../_shared/enums';
@@ -11,6 +11,8 @@ import { AuthenticationService } from '../_shared/security/authentication.servic
   providedIn: 'root'
 })
 export class WikiService {
+  pageLoadedEventSource = new Subject<any>();
+  pageLoadedEvent$ = this.pageLoadedEventSource.asObservable();
 
   constructor(private http: HttpClient,
               private authenticationService: AuthenticationService) {
@@ -65,5 +67,8 @@ export class WikiService {
     return <Observable<any>>this.http.put(Url.WIKI_CONTEXT, data, {headers: headers});
   }
 
+  indicatePageLoaded() {
+    this.pageLoadedEventSource.next();
+  }
 
 }
