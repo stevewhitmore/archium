@@ -10,7 +10,7 @@ import { NotificationService } from '../_shared/notification.service';
   styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent implements OnChanges {
-  @Input() path: string;
+  @Input() pageId: string;
   pageTags: any[];
   allTags: any[];
   updateMode: boolean = false;
@@ -21,15 +21,15 @@ export class TagsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.path.currentValue !== changes.path.previousValue) {
-      this.path = changes.path.currentValue;
+    if (changes.pageId.currentValue !== changes.pageId.previousValue) {
+      this.pageId = changes.pageId.currentValue;
     }
-    this.getTagData(this.path);
+    this.getTagData(this.pageId);
     this.getAllTags();
   }
 
-  getTagData(path) {
-    this.tagsService.getTagData(path)
+  getTagData(pageId) {
+    this.tagsService.getTagData(pageId)
     .pipe(take(1))
     .subscribe(data => {
       this.pageTags = data ? data : [];
@@ -49,7 +49,7 @@ export class TagsComponent implements OnChanges {
       this.pageTags = updatedTags;
 
       const tagData = {
-        path: this.path,
+        pageId: this.pageId,
         tags: this.pageTags
       }
 

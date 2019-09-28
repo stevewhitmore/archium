@@ -26,15 +26,15 @@ class TagController {
     }
 
     function handleGetRequest() {
-        if (!isset($_GET['path'])) {
+        if (!isset($_GET['pageId'])) {
             echo json_encode(array("message" => "Bad request"));
             return header("HTTP/1.1 400 BAD REQUEST");
         }
 
-        if ($_GET['path'] === 'all') {
+        if ($_GET['pageId'] === 'all') {
             echo $this->tag->getAllTags();
         } else {
-            $this->tag->path = $_GET['path'];
+            $this->tag->pageId = $_GET['pageId'];
             $result = $this->tag->getTagsForPage();
 
             if ($result) {

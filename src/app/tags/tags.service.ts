@@ -15,12 +15,12 @@ export class TagsService {
               private authenticationService: AuthenticationService) {
   }
 
-  getTagData(path: string): Observable<any> {
-    return this.http.get(`${Url.TAGS_CONTEXT}index.php?path=${path}`);
+  getTagData(pageId: string): Observable<any> {
+    return this.http.get(`${Url.TAGS_CONTEXT}index.php?pageId=${pageId}`);
   }
 
   getAllTags(): Observable<any> {
-    return this.http.get(`${Url.TAGS_CONTEXT}index.php?path=all`);
+    return this.http.get(`${Url.TAGS_CONTEXT}index.php?pageId=all`);
   }
 
   updateTags(tagData): Observable<any> {
