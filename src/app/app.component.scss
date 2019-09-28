@@ -3,6 +3,10 @@ $blue: #6c88a5;
 $red: #a56c6c;
 $accent: #525252;
 
+* {
+    box-sizing: border-box;
+}
+
 @mixin buttonBasics {
     background: transparent;
     outline: none;
