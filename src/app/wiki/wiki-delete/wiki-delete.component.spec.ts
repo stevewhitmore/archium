@@ -1,8 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WikiDeleteComponent } from './wiki-delete.component';
 import { SimpleChange, DebugElement } from '@angular/core';
-import { debug } from 'util';
 import { By } from '@angular/platform-browser';
 
 const doomedPage = require('../../_shared/testing/test-data/page-single.json');
