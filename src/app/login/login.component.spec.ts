@@ -13,7 +13,7 @@ import { DebugElement } from '@angular/core';
 const authenticationServiceStub = new AuthenticationServiceStub();
 const notificationServiceStub = new NotificationServiceStub();
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let debugEl: DebugElement;
@@ -104,15 +104,52 @@ fdescribe('LoginComponent', () => {
       expect(debugEl.query(By.css('#login-container'))).toBeTruthy();
     });
 
+    it('should turn off the login modal', () => {
+      const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+      logoutWrapper.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      const cancelButton = debugEl.query(By.css('#login-form-cancel'));
+      cancelButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      expect(component.loginModalOn).toBe(false);
+      expect(debugEl.query(By.css('#login-container'))).toBeFalsy();
+    });
+
     describe('form validation checks', () => {
-      it('login button should be disabled if no fields are populated', () => {
+      it('should disable the login button if no fields are populated', () => {
         const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
         logoutWrapper.triggerEventHandler('click', null);
         fixture.detectChanges();
 
         const loginButton = debugEl.query(By.css('#login-form-button'));
-        console.log(loginButton.nativeElement);
         expect(loginButton.nativeElement.disabled).toBe(true);
+      });
+
+      it('should disable the login button if only one of the fields are populated', () => {
+        const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+        logoutWrapper.triggerEventHandler('click', null);
+        fixture.detectChanges();
+
+        component.loginForm.controls['username'].setValue('someUsername');
+        fixture.detectChanges();
+
+        const loginButton = debugEl.query(By.css('#login-form-button'));
+        expect(loginButton.nativeElement.disabled).toBe(true);
+      });
+
+      it('should enable the login button if both fields populated', () => {
+        const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+        logoutWrapper.triggerEventHandler('click', null);
+        fixture.detectChanges();
+
+        component.loginForm.controls['username'].setValue('someUsername');
+        component.loginForm.controls['password'].setValue('somePassword');
+        fixture.detectChanges();
+
+        const loginButton = debugEl.query(By.css('#login-form-button'));
+        expect(loginButton.nativeElement.disabled).toBe(false);
       });
     }); //form validation checks
 
