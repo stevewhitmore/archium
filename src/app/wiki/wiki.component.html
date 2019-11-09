@@ -1,7 +1,5 @@
 <section id="wiki-wrap">
-    <app-wiki-menu (toggleCreateModalEvent)="toggleAddForm()"
-                (toggleEditEvent)="toggleEditForm()"
-                (toggleDeleteModalEvent)="toggleDeleteConfirm()"></app-wiki-menu>
+    <app-wiki-menu (toggleEditEvent)="toggleEditForm()"></app-wiki-menu>
 
     <section class="wiki-wrap-inner" id="home-filler" *ngIf="isHome">
         <h1>Archium [ar'kiyum]</h1>
