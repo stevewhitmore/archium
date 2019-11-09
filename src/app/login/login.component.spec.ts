@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { LoginComponent } from './login.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,13 +8,15 @@ import { AuthenticationService } from '../_shared/security/authentication.servic
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationService } from 'src/app/_shared/notification.service';
 import { NotificationServiceStub } from 'src/app/_shared/testing/stubs/notification-service.stub';
+import { DebugElement } from '@angular/core';
 
 const authenticationServiceStub = new AuthenticationServiceStub();
 const notificationServiceStub = new NotificationServiceStub();
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let debugEl: DebugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,6 +30,7 @@ describe('LoginComponent', () => {
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    debugEl = fixture.debugElement;
     fixture.detectChanges();
   });
 
@@ -68,5 +72,50 @@ describe('LoginComponent', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
-  });
+  }); //isolated tests
+
+  describe('shallow integration tests', () => {
+    it('should trigger logOut() when Log Out button is clicked', () => {
+      const spy = spyOn(component, 'logOut');
+      component.userIsLoggedIn = true;
+      fixture.detectChanges();
+
+      const logoutWrapper = debugEl.query(By.css('#logout-wrapper'));
+      logoutWrapper.triggerEventHandler('click', null);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should trigger toggleLoginModalOn() when Log In button is clicked', () => {
+      const spy = spyOn(component, 'toggleLoginModalOn');
+
+      const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+      logoutWrapper.triggerEventHandler('click', null);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should trigger the login modal', () => {
+      const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+      logoutWrapper.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      expect(component.loginModalOn).toBe(true);
+      expect(debugEl.query(By.css('#login-container'))).toBeTruthy();
+    });
+
+    describe('form validation checks', () => {
+      it('login button should be disabled if no fields are populated', () => {
+        const logoutWrapper = debugEl.query(By.css('#login-wrapper'));
+        logoutWrapper.triggerEventHandler('click', null);
+        fixture.detectChanges();
+
+        const loginButton = debugEl.query(By.css('#login-form-button'));
+        console.log(loginButton.nativeElement);
+        expect(loginButton.nativeElement.disabled).toBe(true);
+      });
+    }); //form validation checks
+
+  }); //shallow integration tests
+
 });
