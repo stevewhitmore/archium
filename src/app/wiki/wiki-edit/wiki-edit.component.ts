@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, OnChanges, EventEmitter, Output } from '@angular/core';
 import { WikiModel } from 'src/app/_shared/models';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
   templateUrl: './wiki-edit.component.html',
   styleUrls: ['./wiki-edit.component.scss']
 })
-export class WikiEditComponent implements OnChanges {
+export class WikiEditComponent implements OnChanges, OnInit {
   @Input() pageContent: WikiModel;
   @Output() editEvent = new EventEmitter();
   currentContent: WikiModel;
@@ -16,11 +16,14 @@ export class WikiEditComponent implements OnChanges {
   constructor(private fb: FormBuilder) {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pageContent.currentValue !== changes.pageContent.previousValue) {
-      this.currentContent = changes.pageContent.currentValue;
-      this.buildForm();
+  ngOnChanges(changes: { [key: string]: SimpleChange }) {
+    if (changes['pageContent'] && changes['pageContent'].currentValue) {
+      this.currentContent = changes['pageContent'].currentValue;
     }
+  }
+
+  ngOnInit() {
+    this.buildForm();
   }
 
   buildForm() {
@@ -43,7 +46,7 @@ export class WikiEditComponent implements OnChanges {
 
   pathMatchTitle() {
     const title = this.wikiEditForm.controls.title.value;
-    const formattedTitle = title.replace(/[^a-z0-9+]+/gi, '-').toLowerCase()
+    const formattedTitle = title.replace(/[^a-z0-9+]+/gi, '-').toLowerCase();
     this.wikiEditForm.controls.path.setValue(formattedTitle);
   }
 }
