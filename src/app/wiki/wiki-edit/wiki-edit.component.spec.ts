@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const mockPage = require('../../_shared/testing/test-data/page-single.json');
 
-fdescribe('WikiEditComponent', () => {
+describe('WikiEditComponent', () => {
   let component: WikiEditComponent;
   let fixture: ComponentFixture<WikiEditComponent>;
 
