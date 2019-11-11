@@ -17,12 +17,13 @@
 
 
     <div id="save-cancel">
-        <button id="saveEdit"
+        <button id="save-edit"
                 title="Save wiki entry"
-                (click)="saveEdit()">
+                (click)="saveEdit()"
+                [disabled]="!wikiEditForm.valid">
             <span>Save</span>
         </button>
-        <button id="cancelEdit"
+        <button id="cancel-edit"
                 title="Cancel changes"
                 (click)="cancelEdit()">
             <i class="fa fa-times" aria-hidden="true"></i>
