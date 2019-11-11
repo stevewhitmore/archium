@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WikiEditComponent } from './wiki-edit.component';
 
-describe('WikiEditComponent', () => {
+fdescribe('WikiEditComponent', () => {
   let component: WikiEditComponent;
   let fixture: ComponentFixture<WikiEditComponent>;
 
