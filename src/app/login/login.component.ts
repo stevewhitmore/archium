@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { AuthenticationService } from '../../_shared/security/authentication.service';
-import { NotificationService } from '../../_shared/notification.service';
+import { AuthenticationService } from '../_shared/security/authentication.service';
+import { NotificationService } from '../_shared/notification.service';
 
 @Component({
   selector: 'app-login',

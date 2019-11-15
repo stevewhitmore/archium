@@ -13,23 +13,17 @@ form {
     }
     textarea {
         padding: 10px;
-        height: 60vh;
+        height: 50vh;
         font-size: 1.25rem;
     }
     #save-cancel {
         margin-top: 10px;
-        button {
-            @include buttonBasics();
-            font-size: 1.25rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid transparent;
-            &:hover {
-                border: 1px solid $accent;
-            }
-            &#save {
-                background-color: $green;
-                color: #fff;
-            }
+        button#save-edit {
+            @include buttonSave();
+            margin-left: 0;
+        }
+        button#cancel-edit {
+            @include buttonCancel();
         }
     }
 

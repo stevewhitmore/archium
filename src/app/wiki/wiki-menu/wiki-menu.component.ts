@@ -19,7 +19,9 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
   pageMenuItems = [];
   filteredMenuItems = [];
   loginStatusSub: Subscription;
+  pageStatusSub: Subscription;
   userIsLoggedIn = false;
+  pageIsLoaded = false;
 
   constructor(private wikiService: WikiService,
               private notificationService: NotificationService,
@@ -32,6 +34,10 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
         this.checkLoginStatus();
       });
 
+      this.pageStatusSub = this.wikiService.pageLoadedEvent$.subscribe(() => {
+        this.pageIsLoaded = true;
+      });
+
       this.checkLoginStatus();
       this.getAllPagePaths();
   }
@@ -40,8 +46,8 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
     this.wikiService.getAllPageLinks()
       .pipe(take(1))
       .subscribe(resp => {
-        resp = resp.filter(page => page.marked_for_deletion !== '1')
-        this.pageMenuItems = resp;        
+        resp = resp.filter(page => page.marked_for_deletion !== 1)
+        this.pageMenuItems = resp;
       }, err => {
         this.notificationService.notify('error', err.message);
       });
@@ -69,7 +75,7 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
     this.pageMenuActive = !this.pageMenuActive;
   }
 
-  filterMenuItems(input) {
+  filterItemsByInput(input) {
     if (!input) {
       this.filteredMenuItems = [];
       return;

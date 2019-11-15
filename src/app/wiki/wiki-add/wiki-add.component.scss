@@ -2,30 +2,15 @@
 
 #add-page-modal {
     @include popoutModal;
-    
+
     input {
         padding: 10px;
         font-size: 16px;
     }
     button {
-        @include buttonBasics();
-        background-color: $green;
-        color: #fff;
-        border: 1px solid $accent;
-        font-size: 1.25rem;
-        padding: 0.5rem 1rem;
-        margin: 1rem;
-        align-self: center;
-        width: 100px;
-        &:hover, &:focus {
-            border: 1px solid #fff;
-        }
+        @include buttonSave();
     }
     #cancel-add-page-btn {
-        background-color: $accent;
-        color: #fff;
-        &:hover, &:focus {
-            border: 1px solid #fff;
-        }
+        @include buttonCancelDark();
     }
 }

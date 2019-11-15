@@ -3,6 +3,10 @@ $blue: #6c88a5;
 $red: #a56c6c;
 $accent: #525252;
 
+* {
+    box-sizing: border-box;
+}
+
 @mixin buttonBasics {
     background: transparent;
     outline: none;
@@ -15,6 +19,46 @@ $accent: #525252;
     }
 }
 
+@mixin buttonSave {
+    @include buttonBasics();
+    background-color: $green;
+    color: #fff;
+    border: 1px solid transparent;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    align-self: center;
+    width: 100px;
+    &:hover, &:focus {
+        border: 1px solid $accent;
+    }
+}
+
+@mixin buttonSaveDark {
+    @include buttonSave();
+    &:hover, &:focus {
+        border: 1px solid #fff;
+    }
+}
+
+@mixin buttonCancel {
+    @include buttonSave();
+    background-color: transparent;
+    color: $accent;
+    &:hover {
+        border: 1px solid $accent;
+    }
+}
+
+@mixin buttonCancelDark {
+    @include buttonSave();
+    background-color: $accent;
+    color: #fff;
+    &:hover, &:focus {
+        border: 1px solid #fff;
+    }
+}
+
 @mixin popoutModal {
     position: fixed;
     top: 0;
@@ -22,6 +66,7 @@ $accent: #525252;
     max-width: 310px;
     height: 100%;
     opacity: 0.95;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     background-color: $accent;

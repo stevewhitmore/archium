@@ -2,16 +2,26 @@
 
 aside {
     position: absolute;
-    top: 70px;
+    top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
     width: 100px;
     height: 100vh;
     background-color: $blue;
     border-top: 1px solid #fff;
     border-right: 1px solid #fff;
     transition: 0.5s all ease;
+    z-index: 1;
+    section#page-menu-wrap {
+        display: grid;
+        &.active {
+            button {
+                background-color: $accent;
+                svg {
+                    transform: rotate(90deg)
+                }
+            }
+        }
+    }
     button {
         @include buttonBasics();
         padding: 25px 0;
@@ -32,71 +42,62 @@ aside {
             }
         }
     }
-    
-    section#page-menu-wrap {
-        display: grid;
-        #page-menu-inner {
-            position: absolute;
-            left: -20rem;
-            padding: 0;
-            margin: 0;
-            height: 100vh;
-            background-color: #525252;
-            transition: 0.5s all ease;
-            overflow: hidden;
-            #search-for-page {
-                display: flex;
-                justify-content: center;
-                margin-top: 1rem;
-                svg#search-icon {
-                    width: 24px;
-                    height: 24px;
-                    left: 2rem;
-                    top: 1.5rem;
-                    position: absolute;
-                    path {
-                        fill: $accent;
-                    }
-                }
-                input {
-                    padding-left: 30px;
-                    height: 30px;
-                }
-            }
-            ul {
-                list-style: none;
-                padding: 0 2rem;
-                max-height: 80vh;
-                overflow: hidden auto;
-                li {
-                    min-width: 200px;
-                    border-bottom: 1px solid #7d7d7d;
-                    a {
-                        padding: 15px 10px;
-                        display: block;
-                        text-decoration: none;
-                        color: #fff;
-                    }
-                }
-            }
-        }
-        &.active {
-            button {
-                background-color: $accent;
-                svg {
-                    transform: rotate(90deg)
-                }
-            }
-            #page-menu-inner {
-                left: 101px;
-            }
-        }
-    }
     section {
         display: flex;
         flex-direction: column;
     }
 }
+
+#page-menu {
+    position: absolute;
+    top: 0;
+    left: -22rem;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-color: #525252;
+    transition: 0.5s all ease;
+    overflow: hidden;
+    &.active {
+        left: 101px;
+    }
+    #search-for-page {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        svg#search-icon {
+            width: 24px;
+            height: 24px;
+            left: 2rem;
+            top: 1.5rem;
+            position: absolute;
+            path {
+                fill: $accent;
+            }
+        }
+        input {
+            padding-left: 30px;
+            height: 30px;
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0 2rem;
+        max-height: 80vh;
+        overflow: hidden auto;
+        li {
+            min-width: 200px;
+            border-bottom: 1px solid #7d7d7d;
+            a {
+                padding: 15px 10px;
+                display: block;
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}
+
 @media (min-width: 1024px) {
     aside {
         button {

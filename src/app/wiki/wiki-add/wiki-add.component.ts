@@ -7,7 +7,6 @@ import { Validators, FormControl } from '@angular/forms';
   styleUrls: ['./wiki-add.component.scss']
 })
 export class WikiAddComponent {
-  @Output() toggleCreateModalEvent = new EventEmitter();
   @Output() createPageEvent = new EventEmitter();
   pageTitle = new FormControl('', [Validators.required]);
 

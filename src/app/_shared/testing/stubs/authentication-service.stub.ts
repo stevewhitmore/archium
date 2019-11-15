@@ -11,14 +11,14 @@ export class AuthenticationServiceStub {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('apiKey') !== null;
+    return false;
   }
 
   getUserName(): string {
     if (this.isLoggedIn()) {
-      return localStorage.getItem('username');
+      return 'some-user';
     }
-    
+
     return null;
   }
 
@@ -27,8 +27,6 @@ export class AuthenticationServiceStub {
   }
 
   logOut(): void {
-      localStorage.removeItem('apiKey');
-      localStorage.removeItem('username');
       this.logInEventSource.next();
   }
 }

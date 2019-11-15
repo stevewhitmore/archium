@@ -1,4 +1,4 @@
-@import "../../app.component.scss";
+@import "../app.component.scss";
 
 .login-button-wrapper {
     display: flex;
@@ -19,11 +19,7 @@
 }
 
 #login-container {
-    position: absolute;
-    right: 20px;
-    top: 0;
-    padding: 20px 20px 0;
-    background-color: $accent;
+    @include popoutModal;
     form#login-form {
         display: flex;
         flex-direction: column;
