@@ -8,7 +8,6 @@ import { NotificationService } from '../_shared/notification.service';
 import { WikiService } from './wiki.service';
 import { WikiServiceStub } from '../_shared/testing/stubs/wiki-service.stub';
 import { NotificationServiceStub } from '../_shared/testing/stubs/notification-service.stub';
-import { WikiModule } from './wiki.module';
 
 const activatedRouteStub = new ActivatedRouteStub();
 const routerStub = new RouterStub();
@@ -79,11 +78,27 @@ describe('WikiComponent', () => {
     fixture = TestBed.createComponent(WikiComponent);
     component = fixture.componentInstance;
     debugEl = fixture.debugElement;
-
-
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  describe('isolated tests', () => {
+
+    describe('calls to service API request methods', () => {
+      it('should get page content', () => {
+        const spy = spyOn(wikiServiceStub, 'getPageContent').and.callThrough();
+        const path = 'some-path';
+
+        component.getPageContent(path);
+
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith(path);
+      });
+
+      it('should assign data to pageContent', () => {
+        component.getPageContent('some-path');
+
+        expect(component.pageContent).toBeTruthy();
+      });
+    }); //calls to service API request methods
+
+  }); //isolated tests
 });

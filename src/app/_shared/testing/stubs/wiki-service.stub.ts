@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { of, Observable, Subject } from 'rxjs';
 
 const mockPageLinks = require('../test-data/all-page-links.json');
+const mockPageContent = require('../test-data/page-single.json');
 
 @Injectable()
 export class WikiServiceStub {
@@ -13,7 +14,11 @@ export class WikiServiceStub {
   }
 
   getPageContent(path: string): Observable<any> {
-    return of();
+    if (!path) {
+      return of();
+    }
+
+    return of(mockPageContent);
   }
 
   savePageChanges(page): Observable<any> {
