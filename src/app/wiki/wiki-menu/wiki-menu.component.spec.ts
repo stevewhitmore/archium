@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { WikiMenuComponent } from './wiki-menu.component';
 import { Component, DebugElement } from '@angular/core';
@@ -13,7 +14,6 @@ import {
   NotificationServiceStub,
   AuthenticationServiceStub
 } from '../../_shared/testing/stubs';
-import { By } from '@angular/platform-browser';
 
 const wikiServiceStub = new WikiServiceStub();
 const notificationServiceStub = new NotificationServiceStub();
@@ -25,7 +25,7 @@ const authenticationServiceStub = new AuthenticationServiceStub();
 })
 export class FakeLoginComponent {}
 
-fdescribe('WikiMenuComponent', () => {
+describe('WikiMenuComponent', () => {
   let component: WikiMenuComponent;
   let fixture: ComponentFixture<WikiMenuComponent>;
   let debugEl: DebugElement;
