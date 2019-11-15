@@ -75,7 +75,7 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
     this.pageMenuActive = !this.pageMenuActive;
   }
 
-  filterMenuItems(input) {
+  filterItemsByInput(input) {
     if (!input) {
       this.filteredMenuItems = [];
       return;

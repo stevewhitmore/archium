@@ -55,7 +55,7 @@
                 type="text"
                 placeholder="Search for page..."
                 #filterInput
-                (keyup)="filterMenuItems(filterInput.value)">
+                (keyup)="filterItemsByInput(filterInput.value)">
     </span>
     <nav (click)="toggleMenuOff()">
         <ul *ngIf="filteredMenuItems.length === 0">
