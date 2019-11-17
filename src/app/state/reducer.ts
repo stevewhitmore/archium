@@ -18,7 +18,6 @@ const newState = (state, newData) => {
 }
 
 export function appReducer(state = defaultState, action: Action) {
-  console.log(action.type, state)
 
   switch (action.type) {
     case Actions.EDIT_MODE:
