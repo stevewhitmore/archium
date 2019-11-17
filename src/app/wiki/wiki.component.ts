@@ -1,9 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { AppState } from '../state/reducer';
+import * as Actions from '../state/actions';
+
 import { WikiModel } from '../_shared/models';
 import { WikiService } from './wiki.service';
-import { take } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 import { NotificationService } from '../_shared/notification.service';
 
 @Component({
@@ -21,10 +26,14 @@ export class WikiComponent implements OnInit, OnDestroy {
   deleteConfirmOn = false;
   isHome = true;
 
+  viewState$: any;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private wikiService: WikiService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private store: Store<AppState>) {
+    this.viewState$ = this.store.select('view');
   }
 
   ngOnInit() {
@@ -56,13 +65,13 @@ export class WikiComponent implements OnInit, OnDestroy {
         .pipe(take(1))
         .subscribe(() => {
           this.notificationService.notify('success', 'Page updated!');
-          this.toggleEditForm();
+          this.resetView();
           this.getPageContent(page.path);
         }, () => {
           this.notificationService.notify('error', 'Unable to update page');
         })
     } else {
-      this.toggleEditForm();
+      this.resetView();
     }
   }
 
@@ -72,13 +81,13 @@ export class WikiComponent implements OnInit, OnDestroy {
       this.wikiService.createPage(title)
       .subscribe(() => {
         this.notificationService.notify('success', 'New page created!');
-        this.toggleAddForm();
+        this.resetView();
         this.router.navigate(['/wiki/', path]);
       }, () => {
         this.notificationService.notify('error', 'Unable to create new page');
       });
     } else {
-      this.toggleAddForm();
+      this.resetView();
     }
   }
 
@@ -87,27 +96,18 @@ export class WikiComponent implements OnInit, OnDestroy {
       this.wikiService.deletePage(path)
       .subscribe(() => {
         this.notificationService.notify('success', 'Page deleted!');
-        this.toggleDeleteConfirm();
+        this.resetView();
         this.router.navigateByUrl('/wiki');
       }, () => {
         this.notificationService.notify('error', 'Unable to delete page');
       });
     } else {
-      this.toggleDeleteConfirm();
+      this.resetView();
     }
   }
 
-  toggleEditForm() {
-    this.editFormOn = !this.editFormOn;
-  }
-
-  toggleAddForm() {
-    this.addFormOn = !this.addFormOn;
-  }
-
-
-  toggleDeleteConfirm() {
-    this.deleteConfirmOn = !this.deleteConfirmOn;
+  resetView() {
+    this.store.dispatch(new Actions.ViewMode());
   }
 
   ngOnDestroy() {

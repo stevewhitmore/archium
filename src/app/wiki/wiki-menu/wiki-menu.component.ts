@@ -6,15 +6,16 @@ import { NotificationService } from '../../_shared/notification.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/_shared/security/authentication.service';
 
+import { Store } from '@ngrx/store';
+import { AppState } from '../../state/reducer';
+import * as Actions from '../../state/actions';
+
 @Component({
   selector: 'app-wiki-menu',
   templateUrl: './wiki-menu.component.html',
   styleUrls: ['./wiki-menu.component.scss']
 })
 export class WikiMenuComponent implements OnInit, OnDestroy {
-  @Output() toggleEditEvent = new EventEmitter();
-  @Output() toggleCreateModalEvent = new EventEmitter();
-  @Output() toggleDeleteModalEvent = new EventEmitter();
   pageMenuActive: boolean = false;
   pageMenuItems = [];
   filteredMenuItems = [];
@@ -26,7 +27,8 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
   constructor(private wikiService: WikiService,
               private notificationService: NotificationService,
               private authenticationService: AuthenticationService,
-              private eRef: ElementRef) {
+              private eRef: ElementRef,
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
@@ -83,20 +85,20 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
     this.filteredMenuItems = this.pageMenuItems.filter(item => item.title.toLowerCase().indexOf(input.toLowerCase()) > -1);
   }
 
-  checkLoginStatus() {
-    this.userIsLoggedIn = this.authenticationService.isLoggedIn();
-  }
-
   toggleEdit() {
-    this.toggleEditEvent.emit(null);
+    this.store.dispatch(new Actions.EditMode());
   }
 
   toggleCreateModal() {
-    this.toggleCreateModalEvent.emit(null);
+    this.store.dispatch(new Actions.AddMode());
   }
 
   toggleDeleteModal() {
-    this.toggleDeleteModalEvent.emit(null);
+    this.store.dispatch(new Actions.DeleteMode());
+  }
+
+  checkLoginStatus() {
+    this.userIsLoggedIn = this.authenticationService.isLoggedIn();
   }
 
   ngOnDestroy() {

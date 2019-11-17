@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ngrx/store": "^8.5.1",
+    "@ngrx/store-devtools": "^8.5.1",
     "ngx-markdown": "^8.1.0",
     "ngx-toasta": "^1.0.3",
     "rxjs": "~6.4.0",
