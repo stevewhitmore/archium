@@ -28,7 +28,6 @@ export class AuthenticationService {
 
   isLoggedIn(): boolean {
     return this.loggedIn;
-    // return true;
   }
 
   userLoginEvent() {
