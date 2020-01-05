@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, Subject } from 'rxjs';
+import { Observable, throwError, Subject, of } from 'rxjs';
 import { WikiModel } from '../_shared/models';
-// import { Url } from '@enums';
 import {Url} from '../_shared/enums';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../_shared/security/authentication.service';
@@ -19,7 +18,8 @@ export class WikiService {
   }
 
   getAllPageLinks() {
-    return <Observable<any>>this.http.get(`${Url.WIKI_CONTEXT}index.php?path=all`);
+    // return <Observable<any>>this.http.get(`${Url.WIKI_CONTEXT}index.php?path=all`);
+    return of([{path: 'foobar', title: 'Foobar'}]);
   }
 
   getPageContent(path: string): Observable<WikiModel> {
