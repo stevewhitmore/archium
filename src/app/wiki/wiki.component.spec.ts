@@ -8,11 +8,14 @@ import { NotificationService } from '../_shared/notification.service';
 import { WikiService } from './wiki.service';
 import { WikiServiceStub } from '../_shared/testing/stubs/wiki-service.stub';
 import { NotificationServiceStub } from '../_shared/testing/stubs/notification-service.stub';
+import { Store } from '@ngrx/store';
+import { StoreStub } from '../_shared/testing/stubs/store.stub';
 
 const activatedRouteStub = new ActivatedRouteStub();
 const routerStub = new RouterStub();
 const wikiServiceStub = new WikiServiceStub();
 const notificationServiceStub = new NotificationServiceStub();
+const storeStub = new StoreStub();
 
 @Component({
   selector: 'app-wiki-menu',
@@ -68,10 +71,11 @@ describe('WikiComponent', () => {
         FakeWikiDeleteComponent
       ],
       providers: [
-        {provide: ActivatedRoute, useValue: activatedRouteStub},
-        {provide: Router, useValue: routerStub},
-        {provide: WikiService, useValue: wikiServiceStub},
-        {provide: NotificationService, useValue: notificationServiceStub}
+        { provide: ActivatedRoute, useValue: activatedRouteStub },
+        { provide: Router, useValue: routerStub },
+        { provide: WikiService, useValue: wikiServiceStub },
+        { provide: NotificationService, useValue: notificationServiceStub },
+        { provide: Store, useValue: storeStub }
       ]
     })
 

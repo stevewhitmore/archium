@@ -14,10 +14,14 @@ import {
   NotificationServiceStub,
   AuthenticationServiceStub
 } from '../../_shared/testing/stubs';
+import { StoreStub } from 'src/app/_shared/testing/stubs/store.stub';
+import { Store } from '@ngrx/store';
+import * as Actions from '../../state/actions';
 
 const wikiServiceStub = new WikiServiceStub();
 const notificationServiceStub = new NotificationServiceStub();
 const authenticationServiceStub = new AuthenticationServiceStub();
+const storeStub = new StoreStub();
 
 @Component({
   selector: 'app-login',
@@ -37,7 +41,8 @@ describe('WikiMenuComponent', () => {
       providers: [
         { provide: WikiService, useValue: wikiServiceStub },
         { provide: NotificationService, useValue: notificationServiceStub },
-        { provide: AuthenticationService, useValue: authenticationServiceStub }
+        { provide: AuthenticationService, useValue: authenticationServiceStub },
+        { provide: Store, useValue: storeStub }
       ]
     })
 
@@ -102,32 +107,32 @@ describe('WikiMenuComponent', () => {
       });
     }); //toggling of boolean properties
 
-    describe('emitting events', () => {
-      it('should emit an toggleEditEvent event', () => {
-        const spy = spyOn(component.toggleEditEvent, 'emit');
+    describe('change state', () => {
+      it('should change to EditMode state on toggleEdit', () => {
+        const spy = spyOn(storeStub, 'dispatch');
 
         component.toggleEdit();
 
         expect(spy).toHaveBeenCalledTimes(1);
-        expect(spy).toHaveBeenCalledWith(null);
+        expect(spy).toHaveBeenCalledWith(new Actions.EditMode());
       });
 
-      it('should emit an toggleCreateModalEvent event', () => {
-        const spy = spyOn(component.toggleCreateModalEvent, 'emit');
+      it('should change to AddMode state on toggleCreateModal', () => {
+        const spy = spyOn(storeStub, 'dispatch');
 
         component.toggleCreateModal();
 
         expect(spy).toHaveBeenCalledTimes(1);
-        expect(spy).toHaveBeenCalledWith(null);
+        expect(spy).toHaveBeenCalledWith(new Actions.AddMode());
       });
 
-      it('should emit an toggleDeleteModalEvent event', () => {
-        const spy = spyOn(component.toggleDeleteModalEvent, 'emit');
+      it('should change to DeleteMode state on toggleDeleteModal', () => {
+        const spy = spyOn(storeStub, 'dispatch');
 
         component.toggleDeleteModal();
 
         expect(spy).toHaveBeenCalledTimes(1);
-        expect(spy).toHaveBeenCalledWith(null);
+        expect(spy).toHaveBeenCalledWith(new Actions.DeleteMode());
       });
     }); //emitting events
 
