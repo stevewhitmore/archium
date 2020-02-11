@@ -84,7 +84,7 @@ describe('WikiComponent', () => {
     debugEl = fixture.debugElement;
   });
 
-  describe('isolated tests', () => {
+  fdescribe('isolated tests', () => {
 
     describe('calls to service API request methods', () => {
       it('should get page content', () => {
@@ -101,6 +101,12 @@ describe('WikiComponent', () => {
         component.getPageContent('some-path');
 
         expect(component.pageContent).toBeTruthy();
+      });
+
+      it('should assign an empty string to content if no content is found', () => {
+        component.getPageContent('');
+
+        expect(component.pageContent.content).toEqual('');
       });
     }); //calls to service API request methods
 

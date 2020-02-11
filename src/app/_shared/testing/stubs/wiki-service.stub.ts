@@ -3,6 +3,7 @@ import { of, Observable, Subject } from 'rxjs';
 
 const mockPageLinks = require('../test-data/all-page-links.json');
 const mockPageContent = require('../test-data/page-single.json');
+const mockEmptyPage = require('../test-data/page-single-empty.json');
 
 @Injectable()
 export class WikiServiceStub {
@@ -15,7 +16,7 @@ export class WikiServiceStub {
 
   getPageContent(path: string): Observable<any> {
     if (!path) {
-      return of();
+      return of(mockEmptyPage);
     }
 
     return of(mockPageContent);
