@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:aot": "ng build --prod --aot --buildOptimizer --optimization",
     "test": "ng test",
     "test-coverage": "ng test --code-coverage",
     "lint": "ng lint",
