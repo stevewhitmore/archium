@@ -3,14 +3,13 @@
         name="add-page"
         id="add-page"
         [formControl]="pageTitle"
-        #addWikiPage
         placeholder="New Page Title" />
     <div>
         <button id="cancel-add-page-btn"
                 title="Cancel"
                 (click)="toggleCreateModal();">Cancel</button>
         <button id="add-page-btn"
-                (click)="createWikiPage(addWikiPage)"
+                (click)="createWikiPage()"
                 [disabled]="!pageTitle.valid">Add</button>
     </div>
 </section>
