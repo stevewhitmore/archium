@@ -53,9 +53,10 @@ export class WikiComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(data => {
         this.pageContent = data;
-        if (!this.pageContent.content) {
-          this.pageContent.content = '';
-        }
+        console.log('pageContent:', this.pageContent)
+        // if (!this.pageContent.content) {
+        //   this.pageContent.content = '';
+        // }
       });
   }
 

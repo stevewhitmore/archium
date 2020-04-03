@@ -17,7 +17,7 @@ import * as Actions from '../../state/actions';
 })
 export class WikiMenuComponent implements OnInit, OnDestroy {
   pageMenuActive: boolean = false;
-  pageMenuItems = [];
+  pageMenuItems: any;
   filteredMenuItems = [];
   loginStatusSub: Subscription;
   pageStatusSub: Subscription;
@@ -49,6 +49,7 @@ export class WikiMenuComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(resp => {
         this.pageMenuItems = resp;
+        console.log('pageMenuItems', this.pageMenuItems)
       }, err => {
         this.notificationService.notify('error', err.message);
       });

@@ -1,0 +1,16 @@
+{
+  "wiki": [
+    {
+      "pageId": 1,
+      "title": "Moocows!",
+      "content": "# Moocows!",
+      "path": "moocows"
+    },
+    {
+      "pageId": 2,
+      "title": "Dog bark?",
+      "content": "# Dog bark?",
+      "path": "dog-bark"
+    }
+  ]
+}
