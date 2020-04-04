@@ -10,7 +10,7 @@ export class WikiService {
   pageLoadedEventSource = new Subject<any>();
   pageLoadedEvent$ = this.pageLoadedEventSource.asObservable();
   pages: Observable<any[]>;
-  apiUrl = 'https://localhost:3000/wiki/'
+  apiUrl = 'http://localhost:3000/wiki/'
 
   constructor(private http: HttpClient) {
   }

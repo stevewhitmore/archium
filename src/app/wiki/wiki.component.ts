@@ -11,21 +11,18 @@ import { WikiService } from './wiki.service';
   styleUrls: ['./wiki.component.scss']
 })
 export class WikiComponent implements OnInit, OnDestroy {
-  routeSub: Subscription;
-  path: string = 'default';
-  pageContent: any;
-  pageTags: any;
-  editFormOn = false;
-  addFormOn = false;
-  deleteConfirmOn = false;
-  isHome = true;
+  pages: any;
 
-  viewState$: any;
-
-  constructor() {
+  constructor(private wikiService: WikiService) {
   }
 
   ngOnInit() {
+    this.wikiService.getAllPages()
+      .pipe(take(1))
+      .subscribe(pages => {
+        this.pages = pages
+        console.log('this.pages', this.pages)
+      });
     // this.routeSub = this.route.params.subscribe(params => {
     //   if (params) {
     //     this.path = params['page'];
@@ -38,7 +35,7 @@ export class WikiComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.routeSub) { this.routeSub.unsubscribe(); }
+    // if (this.routeSub) { this.routeSub.unsubscribe(); }
   }
 
 }
