@@ -1,9 +1,6 @@
-<!-- <nav>
-    <ul>
-        <li *ngFor="let p of pages">
-            <a [routerLink]="{{p.path}}">{{p.title}}</a>
-        </li>
-    </ul>
-</nav> -->
+<div *ngFor="let p of pages">
+    <!-- <a [routerLink]="[p.path]">{{p.title}}</a> -->
+    <button type="button" (click)="selectPage(p)">{{p.title}}</button>
+</div>
 
-<router-outlet></router-outlet>
+<app-wiki-view [selectedPage]="selectedPage"></app-wiki-view>

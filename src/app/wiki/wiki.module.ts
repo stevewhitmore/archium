@@ -8,6 +8,7 @@ import { WikiComponent } from './wiki.component';
 import { WikiService } from './wiki.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WikiViewComponent } from './wiki-view/wiki-view.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MarkdownModule.forRoot()
     ],
     declarations: [
-        WikiComponent
+        WikiComponent,
+        WikiViewComponent
     ],
     providers: [
         WikiService

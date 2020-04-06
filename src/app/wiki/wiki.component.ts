@@ -7,11 +7,11 @@ import { WikiService } from './wiki.service';
 
 @Component({
   selector: 'app-wiki',
-  templateUrl: './wiki.component.html',
-  styleUrls: ['./wiki.component.scss']
+  templateUrl: './wiki.component.html'
 })
 export class WikiComponent implements OnInit, OnDestroy {
   pages: any;
+  selectedPage: any;
 
   constructor(private wikiService: WikiService) {
   }
@@ -21,7 +21,6 @@ export class WikiComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(pages => {
         this.pages = pages
-        console.log('this.pages', this.pages)
       });
     // this.routeSub = this.route.params.subscribe(params => {
     //   if (params) {
@@ -32,6 +31,10 @@ export class WikiComponent implements OnInit, OnDestroy {
     //     }
     //   }
     // });
+  }
+
+  selectPage(selectedPage) {
+    this.selectedPage = selectedPage;
   }
 
   ngOnDestroy() {
