@@ -51,6 +51,5 @@ export class WikiService {
 
   refreshPages() {
     this._pages$ = null;
-    this.getAllPages();
   }
 }

@@ -42,7 +42,9 @@ export class WikiComponent implements OnInit {
         .pipe(take(1))
         .subscribe(() => {
           this.toastrService.success('New page added!');
+          //TODO this should redirect to new page automatically
           this.wikiService.refreshPages();
+          this.loadPages();
         }, () => {
           this.toastrService.error('Error adding page!')
         });
