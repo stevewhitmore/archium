@@ -36,6 +36,8 @@ export class WikiDetailComponent implements OnInit, OnDestroy {
   }
 
   saveChanges() {
+    this.formatPagePath();
+
     this.wikiService.update(this.currentPage)
       .pipe(take(1))
       .subscribe(() => {
@@ -43,6 +45,12 @@ export class WikiDetailComponent implements OnInit, OnDestroy {
       }, () => {
         this.toastrService.error('Error saving changes!')
       });
+  }
+
+  formatPagePath() {
+    this.currentPage.path = this.currentPage.title.toLowerCase()
+                                                   .split(' ').join('-')
+                                                   .replace(/[^0-9a-z -]/gi, '');
   }
 
   ngOnDestroy() {

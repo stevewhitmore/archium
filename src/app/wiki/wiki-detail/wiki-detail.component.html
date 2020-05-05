@@ -2,6 +2,10 @@
     <h1>{{currentPage.title}}</h1>
     <div markdown [data]="currentPage.content"></div>
     
-    <textarea [(ngModel)]="currentPage.content"></textarea>
+    <label for="page-title-input">Page title</label>
+    <input [(ngModel)]="currentPage.title" id="page-title-input" />
+
+    <label for="page-content-edit">Content</label>
+    <textarea [(ngModel)]="currentPage.content" id="page-content-edit"></textarea>
     <button type="button" (click)="saveChanges()">Save</button>
 </div>
