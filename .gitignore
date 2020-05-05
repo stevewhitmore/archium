@@ -1,12 +1,12 @@
+# Dev
 e2e/
 dist/
 node_modules/
 coverage/
-
 package-lock.json
 npm-debug.log
+db.json
 
+# IDE
 *.iml
 .idea
-
-*/config.ini
