@@ -19,6 +19,7 @@
       "dom"
     ],
     "paths": {
+      "@helpers": ["./src/app/helpers/index.ts"],
       "@services": ["./src/app/services/index.ts"]
     }
   },

@@ -1,1 +1,5 @@
-<app-wiki-menu (menuEvent)=handleMenuEvent($event)></app-wiki-menu>
+<app-wiki-menu [pages]="pages$ | async"
+               (addFormActivateEvent)=onAddFormActivateEvent()></app-wiki-menu>
+
+<app-wiki-add *ngIf="addFormOn"
+              (addPageEvent)=onAddPageEvent($event)></app-wiki-add>

@@ -1,7 +1,6 @@
 <nav>
     <ul class="pages">
-        <li *ngFor="let page of pages$ | async"
-            [class.selected]="page.path === selectedPage">
+        <li *ngFor="let page of pages">
             <a [routerLink]="[page.path]">{{ page.title }}</a>
         </li>
     </ul>

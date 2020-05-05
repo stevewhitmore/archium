@@ -1,16 +1,10 @@
 {
   "wiki": [
     {
-      "id": 1,
-      "title": "La la la!!",
-      "content": "Rainbows!",
-      "path": "la-la-la"
-    },
-    {
-      "id": 2,
-      "title": "Dog bark",
-      "content": "Here is some markup **yes it is**.\n\nSome more for you if you please\n\n- and a lovely list\n- of things\n- for me\n- to list\n\n> that's right!",
-      "path": "dog-ba"
+      "id": "e19706f2-763d-4dfb-95b9-edc254c720d3",
+      "title": "Pages For Ages",
+      "path": "pages-for-ages",
+      "content": "## Some great content\n\n---\n\nAnd some other junk *for markup* **yes!**"
     }
   ]
 }

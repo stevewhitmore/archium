@@ -4,8 +4,8 @@ import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { WikiService } from '@services';
+import { formatPagePath } from '@helpers';
 import { ToastrService } from 'ngx-toastr';
-
 
 
 @Component({
@@ -36,7 +36,7 @@ export class WikiDetailComponent implements OnInit, OnDestroy {
   }
 
   saveChanges() {
-    this.formatPagePath();
+    this.currentPage.path = formatPagePath(this.currentPage.title);
 
     this.wikiService.update(this.currentPage)
       .pipe(take(1))
@@ -47,11 +47,7 @@ export class WikiDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  formatPagePath() {
-    this.currentPage.path = this.currentPage.title.toLowerCase()
-                                                   .split(' ').join('-')
-                                                   .replace(/[^0-9a-z -]/gi, '');
-  }
+  
 
   ngOnDestroy() {
     if (this.routeSub) { this.routeSub.unsubscribe(); }
