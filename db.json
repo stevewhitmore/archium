@@ -1,15 +1,15 @@
 {
   "wiki": [
     {
-      "pageId": 1,
+      "id": 1,
       "title": "Moocows!",
       "content": "# Moocows!",
       "path": "moocows"
     },
     {
-      "pageId": 2,
+      "id": 2,
       "title": "Dog bark?",
-      "content": "# Dog bark?",
+      "content": "Here is some markup **yes it is**.\n\nSome more for you if you please\n\n- and a lovely list\n- of things\n- for me\n- to list\n\n> that's right!",
       "path": "dog-bark"
     }
   ]

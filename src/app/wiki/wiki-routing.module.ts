@@ -11,14 +11,8 @@ const wikiRoutes: Routes = [
     component: WikiComponent,
     children: [
       {
-        path: '',
-        component: WikiMenuComponent,
-        children: [
-          {
-            path: ':path',
-            component: WikiDetailComponent,
-          }
-        ]
+        path: ':path',
+        component: WikiDetailComponent,
       }
     ]
   }

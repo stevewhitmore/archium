@@ -1,4 +1,7 @@
 <div *ngIf="currentPage">
     <h1>{{currentPage.title}}</h1>
     <div markdown [data]="currentPage.content"></div>
+    
+    <textarea [(ngModel)]="currentPage.content"></textarea>
+    <button type="button" (click)="saveChanges()">Save</button>
 </div>

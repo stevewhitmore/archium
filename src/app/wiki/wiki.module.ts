@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule }    from '@angular/forms';
 
 import { WikiRoutingModule } from './wiki-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
@@ -13,6 +14,7 @@ import { WikiDetailComponent } from './wiki-detail/wiki-detail.component';
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         WikiRoutingModule,
         MarkdownModule.forRoot()
     ],

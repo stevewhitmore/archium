@@ -1,24 +1,25 @@
-import { Component, OnInit, OnChanges, SimpleChange, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { WikiService } from '../../services/wiki.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
+import { WikiService } from '@services';
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-wiki-detail',
   templateUrl: './wiki-detail.component.html',
   styleUrls: ['./wiki-detail.component.scss']
 })
-export class WikiDetailComponent implements OnChanges, OnInit {
-  @Input() selectedPage: any;
+export class WikiDetailComponent implements OnInit, OnDestroy {
   currentPage: any;
-  routeSub;
+  routeSub: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private wikiService: WikiService) { }
-
-  ngOnChanges(changes: { [key: string]: SimpleChange }) {
-    
-  }
+              private wikiService: WikiService,
+              private toastrService: ToastrService) { }
 
   ngOnInit() {
      this.routeSub = this.route.params.subscribe(params => {
@@ -32,6 +33,20 @@ export class WikiDetailComponent implements OnChanges, OnInit {
           });
       }
     });
+  }
+
+  saveChanges() {
+    this.wikiService.update(this.currentPage)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.toastrService.success('Changes saved!');
+      }, () => {
+        this.toastrService.error('Error saving changes!')
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.routeSub) { this.routeSub.unsubscribe(); }
   }
 
 }

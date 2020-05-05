@@ -19,8 +19,6 @@
       "dom"
     ],
     "paths": {
-      "@models/*": ["app/_models/index.ts"],
-      "@enums": ["app/_shared/enums/index.ts"],
       "@services": ["./src/app/services/index.ts"]
     }
   },

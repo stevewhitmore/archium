@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastaModule } from 'ngx-toasta';
+import { ToastrModule } from 'ngx-toastr';
 
 import { environment } from '../environments/environment';
 
@@ -20,8 +20,8 @@ import { PageNotFoundComponent } from './shared/page-not-found.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     WikiModule,
-    ToastaModule.forRoot(),
   ],
   declarations: [
     AppComponent,

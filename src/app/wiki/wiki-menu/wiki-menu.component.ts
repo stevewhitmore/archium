@@ -1,15 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { take, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { WikiService } from '@services';
 
 @Component({
   selector: 'app-wiki-menu',
-  templateUrl: './wiki-menu.component.html'
+  templateUrl: './wiki-menu.component.html',
+  styleUrls: ['./wiki-menu.component.scss']
 })
 export class WikiMenuComponent implements OnInit {
+  @Output() menuEvent: EventEmitter<any> = new EventEmitter();
   pages$: any;
   selectedPage: any;
   routeSub: Subscription;
@@ -29,6 +31,10 @@ export class WikiMenuComponent implements OnInit {
         return this.wikiService.getAllPages();
       })
     );
+  }
+
+  addNewPage() {
+    this.menuEvent.emit({addPage: true})
   }
 
 }

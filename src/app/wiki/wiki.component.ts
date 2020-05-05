@@ -2,6 +2,14 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'app-wiki',
-    template: '<router-outlet></router-outlet>'
+    templateUrl: './wiki.component.html'
 })
-export class WikiComponent {}
+export class WikiComponent {
+  addPage: boolean = false;
+
+  handleMenuEvent(eventObject) {
+    if (eventObject.addPage) {
+      this.addPage = true;
+    }
+  }
+}
