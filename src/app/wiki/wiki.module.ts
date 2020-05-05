@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { WikiRoutingModule } from './wiki-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
 
-import { WikiComponent } from './wiki.component';
+import { WikiService } from '../services/wiki.service';
 
-import { WikiService } from './wiki.service';
-import { AppRoutingModule } from '../app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { WikiComponent } from './wiki.component';
+import { WikiMenuComponent } from './wiki-menu/wiki-menu.component';
 import { WikiViewComponent } from './wiki-view/wiki-view.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        AppRoutingModule,
+        WikiRoutingModule,
         MarkdownModule.forRoot()
     ],
     declarations: [
         WikiComponent,
+        WikiMenuComponent,
         WikiViewComponent
     ],
     providers: [

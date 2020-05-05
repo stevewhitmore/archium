@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WikiComponent } from './wiki/wiki.component';
+import { PageNotFoundComponent } from './shared/page-not-found.component';
 
 
 const routes: Routes = [
-  { path: 'wiki', component: WikiComponent },
-  { path: 'wiki/:page', component: WikiComponent },
-  { path: '**', redirectTo: 'wiki' }
+  {
+    path: 'wiki',
+    loadChildren: () => import('./wiki/wiki.module').then(m => m.WikiModule),
+    data: { preload: true }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

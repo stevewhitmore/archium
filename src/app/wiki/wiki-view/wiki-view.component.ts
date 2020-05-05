@@ -1,4 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChange, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { WikiService } from '../../services/wiki.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-wiki-view',
@@ -8,23 +11,28 @@ import { Component, OnInit, OnChanges, SimpleChange, Input } from '@angular/core
 export class WikiViewComponent implements OnChanges, OnInit {
   @Input() selectedPage: any;
   currentPage: any;
+  routeSub;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private wikiService: WikiService) { }
 
   ngOnChanges(changes: { [key: string]: SimpleChange }) {
-    if (changes['selectedPage'] && changes['selectedPage'].currentValue) {
-      this.currentPage = changes['selectedPage'].currentValue;
-    }
+    
   }
 
   ngOnInit() {
-    if (!this.currentPage) {
-      this.currentPage = {
-        title: 'Archium [ar\'kiyum]',
-        content: `<h3>"the archives"</h3>
-                  <p>A simple application for recording the things that matter.</p>`
+     this.routeSub = this.route.params.subscribe(params => {
+      if (params) {
+        const path = params['path'];
+
+        this.wikiService.getPage(path)
+          .pipe(take(1))
+          .subscribe(page => {
+            this.currentPage = page;
+          });
       }
-    }
+    });
   }
 
 }

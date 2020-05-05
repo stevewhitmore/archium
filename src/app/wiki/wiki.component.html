@@ -1,6 +1,0 @@
-<div *ngFor="let p of pages">
-    <!-- <a [routerLink]="[p.path]">{{p.title}}</a> -->
-    <button type="button" (click)="selectPage(p)">{{p.title}}</button>
-</div>
-
-<app-wiki-view [selectedPage]="selectedPage"></app-wiki-view>

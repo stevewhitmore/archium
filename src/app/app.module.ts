@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { WikiModule } from './wiki/wiki.module';
+import { PageNotFoundComponent } from './shared/page-not-found.component'; 
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { WikiModule } from './wiki/wiki.module';
     ToastaModule.forRoot(),
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   bootstrap: [AppComponent]
 })

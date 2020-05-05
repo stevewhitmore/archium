@@ -9,17 +9,25 @@ import { catchError, map } from 'rxjs/operators';
 export class WikiService {
   pageLoadedEventSource = new Subject<any>();
   pageLoadedEvent$ = this.pageLoadedEventSource.asObservable();
-  pages: Observable<any[]>;
+  pages$: Observable<any[]>;
   apiUrl = 'http://localhost:3000/wiki/'
 
   constructor(private http: HttpClient) {
   }
 
   getAllPages() {
-    if (!this.pages) {
-      this.pages = <Observable<any[]>>this.http.get(`${this.apiUrl}`);
+    if (!this.pages$) {
+      console.log('foo')
+      this.pages$ = <Observable<any[]>>this.http.get(`${this.apiUrl}`);
     }
-    return this.pages;
+    return this.pages$;
+  }
+
+  getPage(path: string) {
+    return this.getAllPages()
+      .pipe(
+        map(pages => pages.find(page => page.path === path))
+      );
   }
 
 }
