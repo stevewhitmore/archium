@@ -4,17 +4,16 @@ import { WikiService } from '../../services/wiki.service';
 import { take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-wiki-view',
-  templateUrl: './wiki-view.component.html',
-  styleUrls: ['./wiki-view.component.scss']
+  selector: 'app-wiki-detail',
+  templateUrl: './wiki-detail.component.html',
+  styleUrls: ['./wiki-detail.component.scss']
 })
-export class WikiViewComponent implements OnChanges, OnInit {
+export class WikiDetailComponent implements OnChanges, OnInit {
   @Input() selectedPage: any;
   currentPage: any;
   routeSub;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
               private wikiService: WikiService) { }
 
   ngOnChanges(changes: { [key: string]: SimpleChange }) {

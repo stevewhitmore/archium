@@ -8,7 +8,7 @@ import { WikiService } from '../services/wiki.service';
 
 import { WikiComponent } from './wiki.component';
 import { WikiMenuComponent } from './wiki-menu/wiki-menu.component';
-import { WikiViewComponent } from './wiki-view/wiki-view.component';
+import { WikiDetailComponent } from './wiki-detail/wiki-detail.component';
 
 @NgModule({
     imports: [
@@ -19,7 +19,7 @@ import { WikiViewComponent } from './wiki-view/wiki-view.component';
     declarations: [
         WikiComponent,
         WikiMenuComponent,
-        WikiViewComponent
+        WikiDetailComponent
     ],
     providers: [
         WikiService

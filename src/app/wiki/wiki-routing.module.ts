@@ -2,7 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { WikiMenuComponent } from './wiki-menu/wiki-menu.component';
-import { WikiViewComponent } from './wiki-view/wiki-view.component';
+import { WikiDetailComponent } from './wiki-detail/wiki-detail.component';
 import { WikiComponent } from './wiki.component';
 
 const wikiRoutes: Routes = [
@@ -16,7 +16,7 @@ const wikiRoutes: Routes = [
         children: [
           {
             path: ':path',
-            component: WikiViewComponent,
+            component: WikiDetailComponent,
           }
         ]
       }

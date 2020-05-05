@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WikiViewComponent } from './wiki-view.component';
+import { WikiViewComponent } from './wiki-detail.component';
 
 describe('WikiViewComponent', () => {
   let component: WikiViewComponent;
