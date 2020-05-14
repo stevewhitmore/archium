@@ -1,0 +1,36 @@
+section {    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2rem;
+
+    .page-half {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            padding: 5px;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            height: 70vh;
+        }
+
+        button {
+            width: 100px;
+            margin-top: 20px;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            color: #fff;
+            background: green;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

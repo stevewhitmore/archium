@@ -1,11 +1,17 @@
-<div *ngIf="currentPage">
-    <h1>{{currentPage.title}}</h1>
-    <div markdown [data]="currentPage.content"></div>
-    
-    <label for="page-title-input">Page title</label>
-    <input [(ngModel)]="currentPage.title" id="page-title-input" />
+<section *ngIf="currentPage">
 
-    <label for="page-content-edit">Content</label>
-    <textarea [(ngModel)]="currentPage.content" id="page-content-edit"></textarea>
-    <button type="button" (click)="saveChanges()">Save</button>
-</div>
+    <div class="page-half">
+        <label for="page-title-input">Page title</label>
+        <input [(ngModel)]="currentPage.title" id="page-title-input" />
+
+        <label for="page-content-edit">Content</label>
+        <textarea [(ngModel)]="currentPage.content" id="page-content-edit"></textarea>
+        <button type="button" (click)="saveChanges()">Save</button>
+    </div>
+
+    <div class="page-half">
+        <h1>{{currentPage.title}}</h1>
+        <div markdown [data]="currentPage.content"></div>
+    </div>
+
+</section>
